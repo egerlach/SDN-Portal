@@ -1,0 +1,74 @@
+<div class="home_first_column">
+	
+	<% @newses.each do |np| %>
+		
+		<div class="newspost_wrapper">
+			<div class="news_header">
+				<h2><%= link_to np.title, newspost_path(np) %></h2>
+				<h3>by <%= link_to np.user.username, user_path(np.user) %> on <%= np.created_at.strftime("%B %d, %Y") %> | <%= link_to np.comments.count.to_s + " comments", newspost_path(np) %></h3>
+			</div>
+			
+			<hr />
+			<%= safe_content(np.content).html_safe %>
+
+		</div>
+
+	<% end %>
+	<%= newspost_navigation_bar %>
+	
+</div>
+
+<div class="home_second_column">
+
+<div class="home_event_month">
+	<%= link_to "<", :month => (@days[0]-1.days) %>
+	<%= @today.strftime("%B") %> <%= @year %>
+	<%= link_to ">", :month => (@days.last+1.days) %>
+</div>
+
+<table class="home_calendar">
+	<tr>
+		<th>S</th>
+		<th>M</th>
+		<th>T</th>
+		<th>W</th>
+		<th>T</th>
+		<th>F</th>
+		<th>S</th>
+	</tr>
+	
+	<% if @first_day_of_month != 0 %>
+	
+		<tr>
+		<% for i in (0..(@first_day_of_month-1)) %>
+			<td></td>
+		<% end %>
+		
+	<% end %>
+	
+		<% for i in (0..(@days_in_month-1)) %>
+			<% if @days[i].wday == 0 %>
+				<tr>
+			<% end %>
+			
+			<% event_num = @events_in_month.index{|ev| ev.start_at.day == i+1} %>
+			<% if event_num != nil %>
+				<td class="event_date"><%= link_to i+1, event_path(@events_in_month.fetch(event_num)), :class => "event_date" %></td>
+			<% else %>
+				<td><%= i+1 %></td>
+			<% end %>
+			
+			<% if @days[i].wday == 6 %>
+				</tr>
+			<% end %>
+		<% end %>
+		
+	<% if @last_day_of_month != 6 %>
+		<% for i in ((@last_day_of_month+1)..6) %>
+			<td></td>
+		<% end %>
+		</tr>
+	<% end %>
+</table>
+
+</div>

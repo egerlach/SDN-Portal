@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Developer Network</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="content_body">
+		<div class="header">
+			<div class="wrapper">
+				<ul class="navigation">
+					<li><%= link_to "", root_path, :class => "nav_six" %></li>
+					<li><%= link_to "", event_path(next_event), :class => "nav_five" %></li>
+					<li><%= link_to "", forums_path, :class => "nav_four" %></li>
+					<li><%= link_to "", projects_path, :class => "nav_three" %></li>
+					<li><%= link_to "", user_path("self"), :class => "nav_two" %></li>
+					<li><%= link_to "", root_path, :class => "nav_one" %></li>
+				</ul>
+			</div>
+			<%= page_type(request.url) %>
+		</div>
+		
+		<div class="wrapper">
+			<p id="notice"><%= notice %></p>
+			<%= yield %>
+		</div>
+	</div>
+	
+	<div class="footer">
+		<div class="wrapper">
+		
+		</div>
+	</div>
+	
+</body>
+</html>

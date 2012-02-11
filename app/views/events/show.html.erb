@@ -1,0 +1,71 @@
+<h1>
+
+	<% if @event_index > 0 %>
+		<%= link_to "<", event_path(@events[@event_index - 1].id) %>
+	<% else %>
+		<
+	<% end %>
+	
+	<%= @event.name %>
+	
+	<% if @event_index < @events.size - 1 %>
+		<%= link_to ">", event_path(@events[@event_index + 1].id) %>
+	<% else %>
+		>
+	<% end %>
+
+</h1>
+
+<%= event_navigation_bar %>
+<div class="event_wrapper">
+	
+	<%= safe_content(@event.content).html_safe %>
+	
+	<hr />
+	<div class="event_signup">
+		<% if @event.open %>
+		
+		<%= form_for(@guest) do |f| %>
+
+		  <div class="field">
+			<%= f.label :first_name %><br />
+			<%= f.text_field :first_name %>
+		  </div>
+		  <div class="field">
+			<%= f.label :last_name %><br />
+			<%= f.text_field :last_name %>
+		  </div>
+		  <div class="field">
+			<%= f.label :email %><br />
+			<%= f.email_field :email %>
+		  </div>
+			<%= f.hidden_field :event_id, :value => @event.id %>
+		  <div class="actions">
+			<%= submit_tag "Sign Up" %> <%= @event.slots - @event.guests.count %> slots left
+		  </div>
+		<% end %>
+		
+		<% else %>
+			This event is closed for signups.
+		<% end %>
+	</div>
+	
+	<% if current_user.id == @event.user_id || is_admin? %>
+		<table class="guest_list">
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Signed Up On</th>
+		</tr>
+		<% @event.guests.each do |g| %>
+			<tr>
+				<td><%= g.first_name %></td>
+				<td><%= g.last_name %></td>
+				<td><%= g.email %></td>
+				<td><%= g.created_at.to_date %></td>
+			</tr>
+		<% end %>
+		</table>
+	<% end %>
+</div>

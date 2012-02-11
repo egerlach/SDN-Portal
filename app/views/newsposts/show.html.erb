@@ -1,0 +1,42 @@
+
+<div class="newspost_wrapper">
+	<div class="news_header">
+		<h2><%= @newspost.title %></h2>
+		<h3>by <%= link_to @newspost.user.username, user_path(@newspost.user) %> on <%= @newspost.created_at.strftime("%B %d, %Y") %></h3>
+	</div>
+	
+	<hr />
+	<%= safe_content(@newspost.content).html_safe %>
+	<hr />
+	
+	<strong><%= @comments.count %> Comments</strong>
+	<% if logged_in? %>
+		<div class="add_comment">
+			<%= form_for(@comment) do |f| %>
+				
+				<div class="field">
+					<%= f.text_area:content %>
+				</div>
+				<%= f.hidden_field :newspost_id, :value => @newspost.id %>
+				<div class="actions">
+					<%= submit_tag "Add Comment" %>
+				</div>
+				
+			<% end %>
+		</div>
+	<% end %>
+	
+	<% @comments.each do |c| %>
+	
+		<div class="comment_header">
+			<h4>by <%= link_to c.user.username, user_path(c.user) %> on <%= c.created_at.strftime("%B %d, %Y") %></h4>
+		</div>
+		<%= c.content %>
+		<% if current_user.admin || current_user.id == c.user_id %>
+			<%= link_to "Delete Comment", c, confirm: 'Are you sure?', method: :delete %>
+		<% end %>
+	
+	<% end %>
+
+</div>
+<%= newspost_navigation_bar %>

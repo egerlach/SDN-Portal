@@ -1,0 +1,19 @@
+<h1><%= @user.username %></h1>
+
+<%= user_navigation_bar %>
+<div class="user_wrapper">
+	
+	<% if @user.admin %>
+		<strong>Administrator</strong><br />
+	<% end %>
+	<% if is_admin? %>
+		<strong>Userid:</strong> <%= @user.userid %><br />
+	<% end %>
+	<strong>Real Name:</strong> <%= @user.first_name + " " + @user.last_name %><br />
+	<strong>Email:</strong> <%= @user.email %><br />
+	<strong>Member For:</strong> <%= (Date.today - @user.created_at.to_date).to_i.to_s + " days" %><br /> <br />
+
+	<strong>Bio:</strong> <%= @user.bio %><br /><br />
+	<strong>Signature:</strong> <%= safer_content(@user.signature) %>
+
+</div>

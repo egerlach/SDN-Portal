@@ -1,0 +1,215 @@
+$colour_one: #3a4647;
+$colour_two: #c96d37;
+$colour_three: #ba502f;
+$colour_four: #913533;
+$colour_five: #911215;
+$colour_six: #770F12;
+
+body {
+  background-color: #3d3d3d;
+  color: #ffffff;
+  //background-image: url('/assets/woodbg.png');
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  margin: 0;
+  padding: 0;}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  list-style: none;}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px; }
+
+a {
+  color: #000;
+  text-decoration:none;
+  &:visited {
+    color: #666;
+	text-decoration:none;}
+  &:hover {
+    color: #fff;
+	text-decoration:none;} }
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px; } }
+
+#notice {
+  color: green; }
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table; }
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff; }
+  ul li {
+    font-size: 12px;
+    list-style: square; } }
+
+.wrapper {
+	width: 1024px;
+	margin: auto;
+	}
+	
+.header {
+	width: 100%;
+	height: 120px;
+	background-color: #101010;
+	.navigation {
+		height: 100px;
+		margin: 0;
+		padding: 0;
+		li {
+			height: 100%;
+			width: 75px;
+			float: right;
+			a {
+				display: block;
+				height: 100%;
+				width: 100%;
+				background-repeat:no-repeat;
+				background-position:center; 
+			}
+			a.nav_one {
+				background-color: $colour_one;
+				background-image: url('/assets/home.png');
+				&:hover { background-image: url('/assets/hometwo.png'); }
+			}
+			a.nav_two {
+				background-color: $colour_two;
+				background-image: url('/assets/user.png');
+				&:hover { background-image: url('/assets/usertwo.png'); }
+			}
+			a.nav_three {
+				background-color: $colour_three;
+				background-image: url('/assets/projects.png');
+				&:hover { background-image: url('/assets/projectstwo.png'); }
+			}
+			a.nav_four {
+				background-color: $colour_four;
+				background-image: url('/assets/chat.png');
+				&:hover { background-image: url('/assets/chattwo.png'); }
+			}
+			a.nav_five {
+				background-color: $colour_five;
+				background-image: url('/assets/events.png');
+				&:hover { background-image: url('/assets/eventstwo.png'); }
+			}
+			a.nav_six {
+				background-color: $colour_six;
+				background-image: url('/assets/qmark.png');
+				&:hover { background-image: url('/assets/qmarktwo.png'); }
+			}
+		}
+	}
+	.header_one {
+		height: 20px;
+		width: 100%;
+		background-color: $colour_one;
+	}
+	.header_two {
+		height: 20px;
+		width: 100%;
+		background-color: $colour_two;
+	}
+	.header_three {
+		height: 20px;
+		width: 100%;
+		background-color: $colour_three;
+	}
+	.header_four {
+		height: 20px;
+		width: 100%;
+		background-color: $colour_four;
+	}
+	.header_five {
+		height: 20px;
+		width: 100%;
+		background-color: $colour_five;
+	}
+	.header_six {
+		height: 20px;
+		width: 100%;
+		background-color: $colour_six;
+	}
+}
+	
+	
+.footer {
+	background-color: #3a4647;
+	height: 200px;
+	clear: both;
+}
+
+.content_body {
+	width: 100%;
+	min-height: 800px;
+}
+
+
+.newspost_wrapper {
+	background-color: #eeeeee;
+	color: #333333;
+	margin: 0;
+	overflow: hidden;
+	padding: 5px 15px 15px 15px;
+	a {
+		color: #444444;
+		&:hover {color: #913533;}
+	}
+	.news_header {
+		h2 {
+			margin: 5px 0 0 0;
+			font-size: 1.5em;
+		}
+		h3 {
+			margin: 0 0 0 20px;
+			font-size: 0.9em;
+		}
+	}
+}
+
+
+.newspost_nav {
+	height: 20px;
+	width: 100%;
+	background-color: $colour_one;
+	list-style-type: none;
+	margin: 0 0 5px 0;
+	padding: 0;
+	li {
+		float: left;
+		height: 100%;
+		a {
+			text-align:center;
+			display: block;
+			width: 60px;
+			height: 100%;
+			font-size: 10px;
+			color: #eeeeee;
+			&:hover {background-color: darken($colour_one, 10%);}
+		}
+	}
+}
