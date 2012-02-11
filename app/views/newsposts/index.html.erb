@@ -1,0 +1,27 @@
+<h1>Listing Newsposts</h1>
+
+<div class="newspost_wrapper">
+	<table>
+	  <tr>
+		<th>Title</th>
+		<th>Content</th>
+		<th>User</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	  </tr>
+
+	<% @newsposts.each do |newspost| %>
+	  <tr>
+		<td><%= newspost.title %></td>
+		<td><%= newspost.content %></td>
+		<td><%= newspost.user.username %></td>
+		<td><%= link_to 'Show', newspost %></td>
+		<td><%= link_to 'Edit', edit_newspost_path(newspost) %></td>
+		<td><%= link_to 'Destroy', newspost, confirm: 'Are you sure?', method: :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+
+</div>
+<%= newspost_navigation_bar %>

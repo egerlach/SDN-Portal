@@ -1,0 +1,10 @@
+<h1>New User</h1>
+
+<%= user_navigation_bar %>
+<div class="user_wrapper">
+	<% if !current_user %>
+		<%= render 'form' %>
+	<% else %>
+		You already have an account? Try <%= link_to "here?", user_path("self") %><br />
+	<% end %>
+</div>

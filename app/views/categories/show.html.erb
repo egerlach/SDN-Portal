@@ -1,0 +1,38 @@
+<div class="forum_wrapper">
+
+<div class="digg_pagination">
+    <%= will_paginate @topics %>
+</div>
+
+	<table class="forum_table">
+		<tr class="forum_def_row">
+			<td><h4><%= link_to @category.name, @category %></h4><h5><%= @category.description %></h5></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr class="forum_norm_row">
+			<td>Thread</td>
+			<td>Last Post</td>
+			<td>Replies</td>
+			<td>Views</td>
+		</tr>
+		
+		<% @topics.each do |top| %>
+			
+			<tr class="forum_norm_row">
+				<td><h4><%= link_to top.title, top %></h4><h5><%= link_to top.user.username, top.user %></h5></td>
+				<td><%= Time.now.strftime("%b %d %Y, %I:%M%P") %> by username</td>
+				<td><%= top.forumposts.count.to_s %></td>
+				<td><%= top.views.to_s %></td>
+			</tr>
+		
+		<% end %>
+		
+	</table>
+<div class="digg_pagination">
+    <%= will_paginate @topics, :container => false %>
+</div>
+
+</div>
+<%= forum_navigation_bar %>

@@ -1,0 +1,26 @@
+<div class="forum_wrapper">
+
+<div class="digg_pagination">
+    <%= will_paginate @forumposts %>
+</div>
+
+	<table class="forum_table">
+		<tr class="forum_def_row">
+			<td><h4><%= link_to @topic.title, @topic %> in <%= link_to @topic.category.name, @topic.category %></h4></td>
+		</tr>
+		
+		<span class="forum_posts">
+		<% @forumposts.each do |fpost| %>
+			<tr class="fpost_date"><td><%= fpost.created_at.strftime("%B %d %Y %I:%M %p") %></td></tr>
+			<tr class="fpost_user"><td><h2><%= link_to fpost.user.username, fpost.user %> user data stuff</h2></td></tr>
+			<tr class="fpost_content"><td><%= fpost.content %></td></tr>
+		
+		<% end %>
+		</span>
+	</table>
+<div class="digg_pagination">
+    <%= will_paginate @forumposts, :container => false %>
+</div>
+
+</div>
+<%= forum_navigation_bar %>

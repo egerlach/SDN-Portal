@@ -1,0 +1,35 @@
+<div class="forum_wrapper">
+	<table class="forum_table">
+	 
+	  <tr class="forum_def_row">
+		<td><h4><%= link_to @forum.name, @forum %></h4><h5><%= @forum.description %></h5></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	  </tr>
+	  <tr class="forum_norm_row">
+		<td>Name</td>
+		<td>Last Post</td>
+		<td>Threads</td>
+		<td>Posts</td>
+	  </tr>
+	  
+	  <% @forum.categories.each do |cat| %>
+		<tr class="forum_norm_row">
+			<td><h4><%= link_to cat.name, cat %></h4><h5><%= cat.description %></h5></td>
+			<td>none</td>
+			<td><%= cat.topics.count %></td>
+			<td>xxx</td>
+		</tr>
+	  <% end %>
+	  
+	  <tr class="forum_norm_row">
+		<td><h5><%= link_to "Add Category", new_category_path(:forum => @forum.id) %></h5></td>
+		<td></td><td></td><td></td>
+	  </tr>
+	  
+	</table>
+
+
+</div>
+<%= forum_navigation_bar %>

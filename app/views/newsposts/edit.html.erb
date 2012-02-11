@@ -1,0 +1,7 @@
+<h1>Editing newspost</h1>
+
+<div class="newspost_wrapper">
+	<%= render 'form' %>
+	<%= link_to "Delete Post", @newspost, confirm: 'Are you sure?', method: :delete %>
+</div>
+<%= newspost_navigation_bar %>

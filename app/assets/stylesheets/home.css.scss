@@ -1,0 +1,73 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$colour_one: #3a4647;
+$colour_two: #c96d37;
+$colour_three: #ba502f;
+$colour_four: #913533;
+$colour_five: #911215;
+$colour_six: #770F12;
+
+.home_first_column {
+	float: left;
+	display: block;
+	width: 700px;
+}
+
+.home_second_column {
+	width: 320px;
+	float: right;
+}
+
+.home_event_month {
+	width: 100%;
+	background-color: $colour_five;
+	text-align: center;
+	font-size: 200%;
+	padding: 15px 0px 15px 0px;
+	a {
+		color: #000000;
+		&:visited {color: #000000;}
+		&:hover {color: #ffffff;}
+	}
+}
+.home_calendar {
+	width: 100%;
+	background-color: #eeeeee;
+	color: #333333;
+	text-align: center;
+	padding-bottom: 5px;
+	//height: 200px;
+	//margin-bottom: 15px;
+	.event_date {
+		background-color: $colour_five;
+		color: #ffffff;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.home_mailing_list {
+	width: 100%;
+	background-color: #ba502f;
+	height: 120px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+
+.home_projects {
+	width: 100%;
+	height: 200px;
+	background-color: #101010;
+	margin-top: 10px;
+	.project_block {
+		height: 200px;
+		width: 175px;
+		background-color: $colour_two;
+		float: left;
+		&:hover {
+			background-color: $colour_three;
+		}
+	}
+}
