@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_filter CASClient::Frameworks::Rails::Filter
-
+  before_filter :user_exists?
   # POST /comments
   # POST /comments.json
   def create

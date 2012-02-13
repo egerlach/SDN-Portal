@@ -41,7 +41,10 @@
 		  </div>
 			<%= f.hidden_field :event_id, :value => @event.id %>
 		  <div class="actions">
-			<%= submit_tag "Sign Up" %> <%= @event.slots - @event.guests.count %> slots left
+			<%= submit_tag "Sign Up" %>
+			<% if @event.slots %>
+				<%= @event.slots - @event.guests.count %> slots left
+			<% end %>
 		  </div>
 		<% end %>
 		
