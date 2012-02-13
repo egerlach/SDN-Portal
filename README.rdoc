@@ -6,6 +6,8 @@ When a user needs to be set as an admin, in the console the user.admin boolean n
   usr = User.find(id)
   usr.admin = true
   usr.save
+  
+test
 
 == Debugging Rails
 
