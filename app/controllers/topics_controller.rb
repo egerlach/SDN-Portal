@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_filter CASClient::Frameworks::Rails::Filter, :except => [ :show, :index ]
+  before_filter :user_exists?, :except => [ :show, :index ]
   
   # GET /topics/1
   # GET /topics/1.json

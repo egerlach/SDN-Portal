@@ -47,15 +47,11 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.json
   def new
-	if logged_in?
-		@event = Event.new
-		
-		respond_to do |format|
-			format.html # new.html.erb
-			format.json { render json: @event }
-		end
-	else
-		redirect_to root_path
+	@event = Event.new
+	
+	respond_to do |format|
+		format.html # new.html.erb
+		format.json { render json: @event }
 	end
   end
 

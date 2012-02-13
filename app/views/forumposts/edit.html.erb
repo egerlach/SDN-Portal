@@ -2,5 +2,13 @@
 
 <div class="forum_wrapper">
 	<%= render 'form' %>
+	<% if @forumpost.user == current_user || current_user.admin %>
+		<ul class="fpost_tools">
+			<li><%= link_to "Post", @forumpost %></li>
+			<li><%= link_to "Edit", edit_forumpost_path(@forumpost) %></li>
+			<li><%= link_to "Delete", @forumpost, confirm: 'Are you sure?', method: :delete %></li>
+		</ul>
+	<% end %>
 </div>
+
 <%= forum_navigation_bar %>

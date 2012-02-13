@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_filter CASClient::Frameworks::Rails::Filter, :except => [ :show, :index ]
+  before_filter :user_exists?, :except => [ :show, :index ]
 
   # GET /categories/1
   # GET /categories/1.json

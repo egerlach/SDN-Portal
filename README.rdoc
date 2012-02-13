@@ -6,10 +6,13 @@ Pull requests are very welcome.
   bundle install
   bundle update
 
-2. Start the development server to localhost:3000
+2. Create the development database
+  rake db:migrate
+
+3. Start the development server to localhost:3000
   rails server
 	
-3. When a user needs to be set as an admin, in the console the user.admin boolean needs to be set to true.
+4. When a user needs to be set as an admin, in the console the user.admin boolean needs to be set to true.
   rails c
   usr = User.find(id) #with id being whatever integer is in the show page url for a user ('/users/33' would be 33)
   usr.admin = true
