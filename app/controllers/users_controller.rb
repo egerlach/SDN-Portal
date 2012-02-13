@@ -20,15 +20,22 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     if params[:id] == "self" 
-		@user = User.find(current_user.id)
+		curr_user = current_user
+		if curr_user
+			@user = User.find(curr_user.id)
+		end
 	else
 		@user = User.find(params[:id])
 	end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
+	if @user
+		respond_to do |format|
+		  format.html # show.html.erb
+		  format.json { render json: @user }
+		end
+	else
+		redirect_to new_user_path
+	end
   end
 
   # GET /users/new

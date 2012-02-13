@@ -5,9 +5,12 @@ gem 'rails', '3.2.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-#group :development, :test do
+group :development, :test do
   gem 'sqlite3'
-#end
+end
+group :production do
+  gem 'mysql'
+end
 
 gem 'sanitize'
 gem 'will_paginate'
