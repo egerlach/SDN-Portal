@@ -69,8 +69,8 @@ class ForumsController < ApplicationController
   # PUT /forums/1
   # PUT /forums/1.json
   def update
+	@forum = Forum.find(params[:id])
 	if current_user.admin
-		@forum = Forum.find(params[:id])
 
 		respond_to do |format|
 		  if @forum.update_attributes(params[:forum])

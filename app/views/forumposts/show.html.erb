@@ -1,20 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="forum_wrapper">
 
-<p>
-  <b>Content:</b>
-  <%= @forumpost.content %>
-</p>
+		<div class="fpost_header">
+			<h2><%= link_to @forumpost.user.username, @forumpost.user %></h2>
+			<div class="test">
+				Member since: <%= @forumpost.user.created_at.strftime("%B %d %Y") %><br/>
+				Posts: <%= @forumpost.user.forumposts.count %>
+			</div>
+			<h3><%= @forumpost.created_at.strftime("%B %d %Y %I:%M %p") %></h3>
+		</div>
+		
+		<div class="fpost_content">
+			<%= safe_content(@forumpost.content).html_safe %>
+			<% if @forumpost.user.signature != "" %>
+				<hr />
+				<%= safer_content(@forumpost.user.signature).html_safe %>
+			<% end %>
+		</div>
+		
+		<% if @forumpost.user == current_user || current_user.admin %>
+			<ul class="fpost_tools">
+				<li><%= link_to "Post", @forumpost %></li>
+				<li><%= link_to "Edit", edit_forumpost_path(@forumpost) %></li>
+				<li><%= link_to "Delete", @forumpost, confirm: 'Are you sure?', method: :delete %></li>
+			</ul>
+		<% end %>
+		
+		<div class="forum_spacer"></div>
 
-<p>
-  <b>User:</b>
-  <%= @forumpost.user_id %>
-</p>
-
-<p>
-  <b>Topic:</b>
-  <%= @forumpost.topic_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_forumpost_path(@forumpost) %> |
-<%= link_to 'Back', forumposts_path %>
+</div>
+<%= forum_navigation_bar %>

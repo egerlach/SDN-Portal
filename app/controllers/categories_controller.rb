@@ -1,15 +1,5 @@
 class CategoriesController < ApplicationController
   before_filter CASClient::Frameworks::Rails::Filter, :except => [ :show, :index ]
-  # GET /categories
-  # GET /categories.json
-  def index
-    @categories = Category.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @categories }
-    end
-  end
 
   # GET /categories/1
   # GET /categories/1.json
@@ -40,6 +30,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1/edit
   def edit
     @category = Category.find(params[:id])
+	@forum = Forum.find(params[:forum])
   end
 
   # POST /categories
@@ -52,7 +43,7 @@ class CategoriesController < ApplicationController
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
         format.json { render json: @category, status: :created, location: @category }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", :forum => params[:category][:forum] }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
@@ -63,26 +54,27 @@ class CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
 
-    respond_to do |format|
-      if @category.update_attributes(params[:category])
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
-    end
+	respond_to do |format|
+	  if @category.update_attributes(params[:category])
+		format.html { redirect_to @category, notice: 'Category was successfully updated.' }
+		format.json { head :no_content }
+	  else
+		format.html { render action: "edit", :forum => params[:category][:forum] }
+		format.json { render json: @category.errors, status: :unprocessable_entity }
+	  end
+	end
   end
 
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
     @category = Category.find(params[:id])
-		if current_user.admin
+	@forum = @category.forum
+	if current_user.admin
 		@category.destroy
 
 		respond_to do |format|
-		  format.html { redirect_to categories_url }
+		  format.html { redirect_to @forum }
 		  format.json { head :no_content }
 		end
 	else

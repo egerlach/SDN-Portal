@@ -79,6 +79,8 @@ h5 {
 }
 
 .digg_pagination {
+  display: block;
+  float: right;
   background: white;
   cursor: default;
   /* self-clearing method: */ }
@@ -124,25 +126,80 @@ h5 {
     height: 1%; }
   *:first-child + html .digg_pagination {
     overflow: hidden; }
-	
-	
-.fpost_date {
-	background-color: $colour_four;
-	color: #eeeeee;
-}
-.fpost_user {
-	height: 100%;
-	width: 20%;
+
+
+.forum_extra_nav {
+	display: block;
+	width: 100px;
+	height: 24px;
+	padding-top: 2px;
+	text-align: center;
 	float: left;
-	background-color: #cccccc;
+	background-color: $colour_four;
+	a {
+		color: #eeeeee;
+		&:visited {color: #eeeeee;}
+		&:hover {color: #bbbbbb;}
+	}
+}	
+
+.fpost_tools {
+	height: 20px;
+	width: 100%;
+	background-color: $colour_four;
+	list-style-type: none;
+	margin: 0 0 5px 0;
+	padding: 0;
+	li {
+		float: left;
+		height: 100%;
+		a {
+			text-align:center;
+			display: block;
+			width: 75px;
+			height: 100%;
+			font-size: 10px;
+			color: #eeeeee;
+			&:hover {background-color: darken($colour_four, 10%);}
+		}
+	}
 }
+
+.forum_spacer {
+	width: 100%;
+	height: 25px;
+}
+
 .fpost_content {
-	float: right;
-	width: 80%;
+	width: 100%;
 	height: 100%;
 	background-color: #ffffff;
 }
 
-.forum_posts {
-	background-color: #ffffff;
+.fpost_header {
+	background-color: $colour_four;
+	color: #eeeeee;
+	width: 100%;
+	.test {
+		display: block;
+		float: right;
+		width: 400px;
+		text-align: right;
+		position: relative;
+		bottom: 18px;
+	}
+	a {
+		color: #eeeeee;
+		&:visited {color: #eeeeee;}
+		&:hover {color: #bbbbbb;}
+	}
+	h2 {
+		margin: 2px 0 0 0;
+		font-size: 1.5em;
+		width: 200px;
+	}
+	h3 {
+		margin: 0 0 0 20px;
+		font-size: 0.9em;
+	}
 }
