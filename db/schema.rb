@@ -11,15 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120211105142) do
+ActiveRecord::Schema.define(:version => 20120131053952) do
+
+  create_table "achievements", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "topics"
+    t.integer  "forum_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "forum_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -93,9 +100,9 @@ ActiveRecord::Schema.define(:version => 20120211105142) do
     t.integer  "users"
     t.text     "content"
     t.string   "blurb"
+    t.integer  "creator"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "creator"
   end
 
   create_table "tags", :force => true do |t|
@@ -109,11 +116,19 @@ ActiveRecord::Schema.define(:version => 20120211105142) do
     t.integer  "user_id"
     t.integer  "forumposts"
     t.integer  "tags"
+    t.integer  "category_id"
+    t.integer  "views"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "category_id"
-    t.integer  "forum_id"
-    t.integer  "views"
+  end
+
+  create_table "tutorials", :force => true do |t|
+    t.string   "name"
+    t.boolean  "video"
+    t.text     "content"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -131,12 +146,12 @@ ActiveRecord::Schema.define(:version => 20120211105142) do
     t.integer  "forumposts"
     t.text     "bio"
     t.string   "userid"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
     t.date     "birthday"
     t.boolean  "show_year"
-    t.integer  "achievements"
     t.boolean  "show_email"
+    t.integer  "achievements"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

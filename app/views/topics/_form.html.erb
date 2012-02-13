@@ -16,17 +16,19 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+	<%= f.label :category_id %><br />
+	<% if @category %>
+		<%= f.select(:category_id, Category.all.collect {|p| [ p.name, p.id ] }, :selected => @category.id) %>
+	<% else %>
+		<%= f.select(:category_id, Category.all.collect {|p| [ p.name, p.id ] }) %>
+	<% end %>
   </div>
+  
   <div class="field">
-    <%= f.label :forumposts %><br />
-    <%= f.number_field :forumposts %>
+	<%= label(:forumpost, :content) %><br />
+	<%= text_area(:forumpost, :content, :class => "post_content_field") %>
   </div>
-  <div class="field">
-    <%= f.label :tags %><br />
-    <%= f.number_field :tags %>
-  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

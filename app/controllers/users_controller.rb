@@ -57,23 +57,26 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 	@user.userid = session[:cas_user]
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+	if !current_user
+		respond_to do |format|
+		  if @user.save
+			format.html { redirect_to @user, notice: 'User was successfully created.' }
+			format.json { render json: @user, status: :created, location: @user }
+		  else
+			format.html { render action: "new" }
+			format.json { render json: @user.errors, status: :unprocessable_entity }
+		  end
+		end
+	else
+		redirect_to current_user
+	end
   end
 
   # PUT /users/1
   # PUT /users/1.json
   def update
-    user = User.find(params[:id])
-	if current_user == user || is_admin?
+    @user = User.find(params[:id])
+	if current_user == @user || is_admin?
 	
 		respond_to do |format|
 			if @user.update_attributes(params[:user])

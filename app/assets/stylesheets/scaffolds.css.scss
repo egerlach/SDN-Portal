@@ -77,6 +77,14 @@ div {
 	width: 100%;
 	height: 120px;
 	background-color: #101010;
+	.site_name {
+		float: left;
+		font-family: "Lucida Console", "Monaco5", monospace;
+		font-size: 60px;
+		margin-top: 60px;
+		.port1 {color: blue;}
+		.port2 {color: orange;}
+	}
 	.navigation {
 		height: 100px;
 		margin: 0;
@@ -212,4 +220,9 @@ div {
 			&:hover {background-color: darken($colour_one, 10%);}
 		}
 	}
+}
+
+.post_content_field {
+	width: 100%;
+	height: 300px;
 }

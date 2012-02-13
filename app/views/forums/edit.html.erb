@@ -1,6 +1,6 @@
-<h1>Editing forum</h1>
+<h1>Editing <%= @forum.name %></h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @forum %> |
-<%= link_to 'Back', forums_path %>
+<div class="forum_wrapper">
+	<%= render 'form' %>
+</div>
+<%= forum_navigation_bar %>

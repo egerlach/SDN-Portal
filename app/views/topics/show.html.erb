@@ -1,26 +1,49 @@
 <div class="forum_wrapper">
 
+<h1><%= link_to @topic.title, @topic %> in <%= link_to @category.name, @category %></h1>
+
+<div class="forum_extra_nav"><%= link_to "New Post", new_forumpost_path(:topic => @topic.id) %></div>
 <div class="digg_pagination">
     <%= will_paginate @forumposts %>
 </div>
 
-	<table class="forum_table">
-		<tr class="forum_def_row">
-			<td><h4><%= link_to @topic.title, @topic %> in <%= link_to @topic.category.name, @topic.category %></h4></td>
-		</tr>
+	<div class="forum_spacer"></div>
 		
-		<span class="forum_posts">
-		<% @forumposts.each do |fpost| %>
-			<tr class="fpost_date"><td><%= fpost.created_at.strftime("%B %d %Y %I:%M %p") %></td></tr>
-			<tr class="fpost_user"><td><h2><%= link_to fpost.user.username, fpost.user %> user data stuff</h2></td></tr>
-			<tr class="fpost_content"><td><%= fpost.content %></td></tr>
+	<% @forumposts.each do |fpost| %>
 		
+		<div class="fpost_header">
+			<h2><%= link_to fpost.user.username, fpost.user %></h2>
+			<div class="test">
+				Member since: <%= fpost.user.created_at.strftime("%B %d %Y") %><br/>
+				Posts: <%= fpost.user.forumposts.count %>
+			</div>
+			<h3><%= fpost.created_at.strftime("%B %d %Y %I:%M %p") %></h3>
+		</div>
+		
+		<div class="fpost_content">
+			<%= safe_content(fpost.content).html_safe %>
+			<% if fpost.user.signature != "" %>
+				<hr />
+				<%= safer_content(fpost.user.signature).html_safe %>
+			<% end %>
+		</div>
+		
+		<% if fpost.user == current_user || current_user.admin %>
+			<ul class="fpost_tools">
+				<li><%= link_to "Post", fpost %></li>
+				<li><%= link_to "Edit", edit_forumpost_path(fpost) %></li>
+				<li><%= link_to "Delete", fpost, confirm: 'Are you sure?', method: :delete %></li>
+			</ul>
 		<% end %>
-		</span>
-	</table>
+		
+		<div class="forum_spacer"></div>
+	<% end %>
+	
+<div class="forum_extra_nav"><%= link_to "New Post", new_forumpost_path(:topic => @topic.id) %></div>
 <div class="digg_pagination">
     <%= will_paginate @forumposts, :container => false %>
 </div>
+<div class="forum_spacer"></div>
 
 </div>
 <%= forum_navigation_bar %>
