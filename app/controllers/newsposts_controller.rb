@@ -7,16 +7,11 @@ class NewspostsController < ApplicationController
   # GET /newsposts
   # GET /newsposts.json
   def index
-	if is_admin?
-		@newsposts = Newspost.all
+	@newsposts = Newspost.all
 
-		respond_to do |format|
-		  format.html # index.html.erb
-		  format.json { render json: @newsposts }
-		end
-	
-	else
-		redirect_to root_path
+	respond_to do |format|
+		format.html # index.html.erb
+		format.json { render json: @newsposts }
 	end
   end
 

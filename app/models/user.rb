@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 	has_many :forumposts
 	has_many :achievements
 	
-	validates :username, :presence => true, :uniqueness => true
+	validates :username, :presence => true, :uniqueness => true, :length => { :in => 1..20 }
 	validates :userid, :presence => true
 	validates :first_name, :presence => true
 end
