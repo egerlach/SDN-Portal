@@ -13,7 +13,7 @@ module ApplicationHelper
 			html = "<div class='header_four'></div>"
 		elsif url.include? "events"
 			html = "<div class='header_five'></div>"
-		elsif url.include? "help"
+		elsif (url.include? "help") || (url.include? "about")
 			html = "<div class='header_six'></div>"
 		else
 			html = "<div class='header_one'></div>"

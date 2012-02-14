@@ -1,0 +1,7 @@
+<h1>About</h1>
+<div class="about_wrapper">
+	<%= safe_content(@about.content).html_safe %>
+	<% if logged_in? && is_admin? %>
+		<%= link_to "Edit", edit_about_path(@about.id) %>
+	<% end %>
+</div>
