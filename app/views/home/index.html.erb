@@ -1,6 +1,8 @@
 <div class="home_first_column">
 	<div class="newspost_wrapper">
+		<div class="digg_pagination">
 		<%= will_paginate @newses, :page_links => false %>
+		</div>
 		<% @newses.each do |np| %>
 		
 			<div class="news_header">
@@ -19,13 +21,15 @@
 
 
 		<% end %>
+		<div class="digg_pagination">
 		<%= will_paginate @newses, :page_links => false %>
+		</div>
 	</div>
 	<%= newspost_navigation_bar %>
 	
 </div>
 
-<div class="home_second_column">
+<!--<div class="home_second_column">
 
 <div class="home_event_month">
 	<%= link_to "<", :month => (@days[0]-1.days) %>
@@ -78,4 +82,4 @@
 	<% end %>
 </table>
 
-</div>
+</div> -->

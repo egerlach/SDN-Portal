@@ -1,5 +1,7 @@
 SDNPortal::Application.routes.draw do
 
+  get "about/index"
+
   resources :forumposts
 
   resources :topics
@@ -12,6 +14,7 @@ SDNPortal::Application.routes.draw do
 
   resources :users
 
+  resources :about
   resources :pages
 
   resources :comments

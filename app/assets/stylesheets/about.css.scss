@@ -1,0 +1,14 @@
+// Place all the styles related to the About controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.about_wrapper {
+	background-color: #eeeeee;
+	color: #333333;
+	margin: 0;
+	padding: 15px;
+	a {
+		color: #444444;
+		&:hover {color: #913533;}
+	}
+}

@@ -7,8 +7,11 @@ Use bundler to install gems
   bundle update
 Create the development database
   rake db:migrate
+Run the initial model setups
+  rake initial_setup
 Start the development server to localhost:3000
   rails server
+Log into the site by clicking one the user icon. Create a User.
 When a user needs to be set as an admin, in the console the user.admin boolean needs to be set to true.
   rails c
   usr = User.find(id) #with id being whatever integer is in the show page url for a user ('/users/33' would be 33)
