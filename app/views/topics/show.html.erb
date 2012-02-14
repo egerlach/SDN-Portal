@@ -13,7 +13,7 @@
 		
 		<div class="fpost_header">
 			<h2><%= link_to fpost.user.username, fpost.user %></h2>
-			<div class="test">
+			<div class="col2">
 				Member since: <%= fpost.user.created_at.strftime("%B %d %Y") %><br/>
 				Posts: <%= fpost.user.forumposts.count %>
 			</div>

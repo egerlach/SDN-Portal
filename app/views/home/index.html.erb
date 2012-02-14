@@ -1,19 +1,26 @@
 <div class="home_first_column">
-	
-	<% @newses.each do |np| %>
+	<div class="newspost_wrapper">
+		<%= will_paginate @newses, :page_links => false %>
+		<% @newses.each do |np| %>
 		
-		<div class="newspost_wrapper">
 			<div class="news_header">
 				<h2><%= link_to np.title, newspost_path(np) %></h2>
 				<h3>by <%= link_to np.user.username, user_path(np.user) %> on <%= np.created_at.strftime("%B %d, %Y") %> | <%= link_to np.comments.count.to_s + " comments", newspost_path(np) %></h3>
 			</div>
 			
 			<hr />
-			<%= safe_content(np.content).html_safe %>
+			<% if np.content.length > 1000 %>
+				<%= safe_content(np.content).html_safe[0..999] + '...' %>
+				<%= link_to "Read More", np %>
+			<% else %>
+				<%= safe_content(np.content).html_safe %>
+			<% end %>
 
-		</div>
 
-	<% end %>
+
+		<% end %>
+		<%= will_paginate @newses, :page_links => false %>
+	</div>
 	<%= newspost_navigation_bar %>
 	
 </div>
@@ -53,7 +60,7 @@
 			
 			<% event_num = @events_in_month.index{|ev| ev.start_at.day == i+1} %>
 			<% if event_num != nil %>
-				<td class="event_date"><%= link_to i+1, event_path(@events_in_month.fetch(event_num)), :class => "event_date" %></td>
+				<td class="event_date"><%= link_to i+1, event_path(@events_in_month.fetch(event_num)), :class => "event_date", :alt => @events_in_month.fetch(event_num).blurb, :title => @events_in_month.fetch(event_num).name + " / " + @events_in_month.fetch(event_num).blurb %></td>
 			<% else %>
 				<td><%= i+1 %></td>
 			<% end %>

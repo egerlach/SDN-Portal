@@ -177,10 +177,12 @@ h5 {
 }
 
 .fpost_header {
-	background-color: $colour_four;
-	color: #eeeeee;
 	width: 100%;
-	.test {
+	background-color: #dddddd;
+	color: #333333;
+	margin: 0;
+	overflow: hidden;
+	.col2 {
 		display: block;
 		float: right;
 		width: 400px;
@@ -189,14 +191,12 @@ h5 {
 		bottom: 18px;
 	}
 	a {
-		color: #eeeeee;
-		&:visited {color: #eeeeee;}
-		&:hover {color: #bbbbbb;}
+		color: #444444;
+		&:hover {color: #913533;}
 	}
 	h2 {
-		margin: 2px 0 0 0;
+		margin: 5px 0 0 0;
 		font-size: 1.5em;
-		width: 200px;
 	}
 	h3 {
 		margin: 0 0 0 20px;
