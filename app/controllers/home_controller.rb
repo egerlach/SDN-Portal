@@ -18,7 +18,7 @@ class HomeController < ApplicationController
 	
 	@events_in_month = Event.where("start_at >= ? and start_at <= ?", Date.new(@year, @month, 1) - 1.days, Date.new(@year, @month, @days_in_month) + 1.days)
 	
-	@newses = Newspost.order("updated_at DESC").limit(8)
+	@newses = Newspost.order("updated_at DESC").paginate(:page => params[:page], :per_page => 5)
   
 	respond_to do |format|
       format.html # index.html.erb

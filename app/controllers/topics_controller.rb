@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
 	@topic.save
 	@category = @topic.category
 	@forum = @category.forum
-	@forumposts =  @topic.forumposts.order(:created_at).paginate(:page => params[:page], :per_page => 10)
+	@forumposts =  @topic.forumposts.order(:created_at).paginate(:page => params[:page], :per_page => 6)
 
     respond_to do |format|
       format.html # show.html.erb

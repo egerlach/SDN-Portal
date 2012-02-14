@@ -11,15 +11,17 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-	if is_admin?
-		@events = Event.all
+	@events = Event.all
 	
+	if !is_admin?
+		redirect_to root_path
+	else
+
 		respond_to do |format|
 		format.html # index.html.erb
 		format.json { render json: @events }
 		end
-	else
-		redirect_to root_path
+
 	end
   end
 
@@ -28,8 +30,10 @@ class EventsController < ApplicationController
   def show
 	@events = Event.order(:start_at)
 	
-	if @events.empty?
+	if @events.empty? && logged_in?
 		redirect_to new_event_path
+	elsif @events.empty?
+		redirect_to root_path
 	else
 	
 		@event_index = @events.index{|ev| ev.id.to_s == params[:id]}
