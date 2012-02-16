@@ -29,4 +29,13 @@ module UsersHelper
 		
 		html.html_safe
 	end
+
+	def user_post_styles (user)
+		string = 'background-color:#'
+		string << user.post_colour
+		string << ';color:#'
+		string << user.font_colour
+		string << ';'
+		string
+	end
 end

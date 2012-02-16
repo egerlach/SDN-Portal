@@ -18,26 +18,38 @@
 			<span class="fpost_number">#1</span>
 		</div>
 
-		<div class="fpost_content">
+		<div class="fpost_content" style=<%= user_post_styles(fpost.user) %>>
 			<%= safe_content(fpost.content).html_safe %>
 			<br />---<br />
 			<%= safer_content(fpost.user.signature).html_safe %>
 		</div>
 
 		<% if i.even? %>
-		<div class="fpost_user_right">
-			<div class="user_arrow">
+			<div class="fpost_user_right">
+				<div class="user_arrow" style=<%= user_post_styles(fpost.user) %>>
 
+				</div>
+				<div class="user_photo">
+					<%= image_tag avatar_url(fpost.user) %>
+				</div>
+				<div class="fpost_user">
+					<span class="fpost_username"><%= link_to fpost.user.username, fpost.user %></span><br />
+					<div class="online_box"></div> Online
+				</div>
 			</div>
-			<div class="user_photo"></div>
-		</div>
 		<% else %>
-		<div class="fpost_user_left">
-			<div class="user_arrow">
-
+			<div class="fpost_user_left">
+				<div class="user_arrow" style=<%= user_post_styles(fpost.user) %>>
+					
+				</div>
+				<div class="user_photo">
+					<%= image_tag avatar_url(fpost.user) %>
+				</div>
+				<div class="fpost_user">
+					<span class="fpost_username"><%= link_to fpost.user.username, fpost.user %></span><br />
+					<div class="online_box"></div> Online
+				</div>
 			</div>
-			<div class="user_photo"></div>
-		</div>
 		<% end %>
 
 		<!--<div class="fpost_header">

@@ -10,4 +10,7 @@ class User < ActiveRecord::Base
 	validates :username, :presence => true, :uniqueness => true, :length => { :in => 1..20 }
 	validates :userid, :presence => true
 	validates :first_name, :presence => true
+	validates :email, :presence => true
+	validates_format_of :post_colour, :with => /^(([a-fA-F0-9]){3}){1,2}$/
+	validates_format_of :font_colour, :with => /^(([a-fA-F0-9]){3}){1,2}$/
 end

@@ -184,7 +184,25 @@ h5 {
 		margin-top: 10px;
 		margin-right: 10px;
 		float: right;
-		background-color: #cccccc;
+	}
+	.fpost_user {
+		margin-top: 10px;
+		height: 50px;
+		display: block;
+		float: right;
+		margin-right: 10px;
+		.fpost_username {
+			font-size: 20px;
+			font-weight: bold;
+			text-align: right;
+		}
+		.online_box {
+			width: 5px;
+			height: 5px;
+			background-color: green;
+			float: left;
+			margin: 7px 5px 0px 10px;
+		}
 	}
 }
 
@@ -206,6 +224,24 @@ h5 {
 		margin-top: 10px;
 		margin-left: 10px;
 		float: left;
-		background-color: #cccccc;
+	}
+	.fpost_user {
+		margin-top: 10px;
+		height: 50px;
+		display: block;
+		float: left;
+		margin-left: 10px;
+		.fpost_username {
+			font-size: 20px;
+			font-weight: bold;
+			text-align: left;
+		}
+		.online_box {
+			width: 5px;
+			height: 5px;
+			background-color: green;
+			float: left;
+			margin: 7px 5px 0px 10px;
+		}
 	}
 }

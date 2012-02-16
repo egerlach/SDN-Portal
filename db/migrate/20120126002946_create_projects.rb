@@ -6,7 +6,8 @@ class CreateProjects < ActiveRecord::Migration
       t.integer :users
       t.text :content
       t.string :blurb
-	  t.integer :creator
+	    t.integer :creator
+      t.integer :category_id
 
       t.timestamps
     end

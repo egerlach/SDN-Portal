@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120131053952) do
+ActiveRecord::Schema.define(:version => 20120216155938) do
 
   create_table "achievements", :force => true do |t|
     t.string   "name"
@@ -56,8 +56,9 @@ ActiveRecord::Schema.define(:version => 20120131053952) do
     t.text     "content"
     t.integer  "user_id"
     t.integer  "topic_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "post_number"
   end
 
   create_table "forums", :force => true do |t|
@@ -101,8 +102,9 @@ ActiveRecord::Schema.define(:version => 20120131053952) do
     t.text     "content"
     t.string   "blurb"
     t.integer  "creator"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "category_id"
   end
 
   create_table "tags", :force => true do |t|
@@ -152,6 +154,11 @@ ActiveRecord::Schema.define(:version => 20120131053952) do
     t.integer  "achievements"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.boolean  "online"
+    t.boolean  "show_online"
+    t.integer  "technologies"
+    t.string   "font_colour"
+    t.string   "post_colour"
   end
 
 end
