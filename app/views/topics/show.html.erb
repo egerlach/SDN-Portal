@@ -8,10 +8,39 @@
 </div>
 
 	<div class="forum_spacer"></div>
+		<div class="forum_spacer"></div>
 		
+	<% i = 1 %>
 	<% @forumposts.each do |fpost| %>
 		
-		<div class="fpost_header">
+		<div class="fpost_date">
+			<span class="date_to_left"><%= fpost.created_at.strftime("%B %d %Y %I:%M %p") %></span>
+			<span class="fpost_number">#1</span>
+		</div>
+
+		<div class="fpost_content">
+			<%= safe_content(fpost.content).html_safe %>
+			<br />---<br />
+			<%= safer_content(fpost.user.signature).html_safe %>
+		</div>
+
+		<% if i.even? %>
+		<div class="fpost_user_right">
+			<div class="user_arrow">
+
+			</div>
+			<div class="user_photo"></div>
+		</div>
+		<% else %>
+		<div class="fpost_user_left">
+			<div class="user_arrow">
+
+			</div>
+			<div class="user_photo"></div>
+		</div>
+		<% end %>
+
+		<!--<div class="fpost_header">
 			<h2><%= link_to fpost.user.username, fpost.user %></h2>
 			<div class="col2">
 				Member since: <%= fpost.user.created_at.strftime("%B %d %Y") %><br/>
@@ -28,15 +57,17 @@
 			<% end %>
 		</div>
 		
-		<% if fpost.user == current_user || current_user.admin %>
+		 <% if fpost.user == current_user || current_user.admin %>
 			<ul class="fpost_tools">
 				<li><%= link_to "Post", fpost %></li>
 				<li><%= link_to "Edit", edit_forumpost_path(fpost) %></li>
 				<li><%= link_to "Delete", fpost, confirm: 'Are you sure?', method: :delete %></li>
 			</ul>
-		<% end %>
+		<% end %> -->
 		
 		<div class="forum_spacer"></div>
+
+		<% i = i + 1 %>
 	<% end %>
 	
 <div class="forum_extra_nav"><%= link_to "New Post", new_forumpost_path(:topic => @topic.id) %></div>
