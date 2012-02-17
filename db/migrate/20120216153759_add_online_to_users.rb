@@ -4,7 +4,5 @@ class AddOnlineToUsers < ActiveRecord::Migration
 
     add_column :users, :show_online, :boolean
 
-    add_column :users, :technologies, :integer
-
   end
 end

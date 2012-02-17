@@ -10,7 +10,6 @@ class CreateEvents < ActiveRecord::Migration
       t.string :location
       t.integer :slots
       t.boolean :open
-	  t.integer :guests
 
       t.timestamps
     end
