@@ -3,7 +3,7 @@
 	<% if @event_index > 0 %>
 		<%= link_to "<", event_path(@events[@event_index - 1].id) %>
 	<% else %>
-		<
+		&#60;
 	<% end %>
 	
 	<%= @event.name %>
@@ -11,7 +11,7 @@
 	<% if @event_index < @events.size - 1 %>
 		<%= link_to ">", event_path(@events[@event_index + 1].id) %>
 	<% else %>
-		>
+		&#62;
 	<% end %>
 
 </h1>
