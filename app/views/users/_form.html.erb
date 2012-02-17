@@ -37,6 +37,14 @@
 		<%= f.label :signature %><br />
 		<%= f.text_area :signature %>
 	</div>
+  <script type="text/javascript" src="/assets/jscolor/jscolor.js"></script>
+  <div class="field">
+    <%= f.label :post_colour %><br />
+    <%= f.text_field :post_colour, :class => "color" %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :font_colour %>
+  </div>
   <% end %>
   
   <div class="actions">
