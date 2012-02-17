@@ -7,6 +7,7 @@ Use bundler to install gems
   bundle update
 Create the development database
   rake db:setup
+  rake db:migrate
 Start the development server to localhost:3000
   rails server
 Log into the site by clicking one the user icon. Create a User.

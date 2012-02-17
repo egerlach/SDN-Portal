@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120216155938) do
+ActiveRecord::Schema.define(:version => 20120217173804) do
 
   create_table "achievements", :force => true do |t|
     t.string   "name"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(:version => 20120216155938) do
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "topics"
     t.integer  "forum_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -47,7 +46,6 @@ ActiveRecord::Schema.define(:version => 20120216155938) do
     t.string   "location"
     t.integer  "slots"
     t.boolean  "open"
-    t.integer  "guests"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -63,7 +61,6 @@ ActiveRecord::Schema.define(:version => 20120216155938) do
 
   create_table "forums", :force => true do |t|
     t.string   "name"
-    t.integer  "categories"
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -81,8 +78,6 @@ ActiveRecord::Schema.define(:version => 20120216155938) do
   create_table "newsposts", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.integer  "tags"
-    t.integer  "comments"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -97,14 +92,12 @@ ActiveRecord::Schema.define(:version => 20120216155938) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
-    t.integer  "tags"
-    t.integer  "users"
     t.text     "content"
     t.string   "blurb"
     t.integer  "creator"
+    t.integer  "category_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "category_id"
   end
 
   create_table "tags", :force => true do |t|
@@ -116,8 +109,6 @@ ActiveRecord::Schema.define(:version => 20120216155938) do
   create_table "topics", :force => true do |t|
     t.string   "title"
     t.integer  "user_id"
-    t.integer  "forumposts"
-    t.integer  "tags"
     t.integer  "category_id"
     t.integer  "views"
     t.datetime "created_at",  :null => false
@@ -139,26 +130,17 @@ ActiveRecord::Schema.define(:version => 20120216155938) do
     t.string   "last_name"
     t.string   "email"
     t.text     "signature"
-    t.integer  "projects"
-    t.integer  "events"
-    t.integer  "comments"
     t.boolean  "admin"
-    t.integer  "newsposts"
-    t.integer  "topics"
-    t.integer  "forumposts"
     t.text     "bio"
     t.string   "userid"
     t.date     "birthday"
     t.boolean  "show_year"
     t.boolean  "show_email"
-    t.integer  "achievements"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.boolean  "online"
-    t.boolean  "show_online"
-    t.integer  "technologies"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "font_colour"
     t.string   "post_colour"
+    t.boolean  "show_name"
   end
 
 end
