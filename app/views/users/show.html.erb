@@ -22,7 +22,11 @@
 	<% end %>
 	<strong>Real Name:</strong> <% if @user.show_name || is_admin? %><%= @user.first_name + " " + @user.last_name %><% else %>hidden<% end %><br />
 	<strong>Email:</strong> <% if @user.show_email || is_admin? %><%= @user.email %><% else %>hidden<% end %><br />
-	<strong>Member Since:</strong> <%= @user.created_at.strftime("%B %d, %Y") %><br /> <br />
+	<strong>Member Since:</strong> <%= @user.created_at.strftime("%B %d, %Y") %><br />
+	<!-- <% if @user.birthday %>
+	<strong>Birthday:</strong> <%= @user.birthday.strftime("%B %d") %><% if @user.show_year %><%= @user.birthday.strftime(", %Y") %><% end %><br />
+	<% end %> -->
+	<br />
 
 	<strong>Bio:</strong> <%= @user.bio %><br /><br />
 	<strong>Signature:</strong> <%= safer_content(@user.signature) %>

@@ -29,22 +29,38 @@
   </div>
   
   <% if @user.username %>
-	<div class="field">
-		<%= f.label :bio %><br />
-		<%= f.text_area :bio %>
-	</div>
-	<div class="field">
-		<%= f.label :signature %><br />
-		<%= f.text_area :signature %>
-	</div>
-  <script type="text/javascript" src="/assets/jscolor/jscolor.js"></script>
-  <div class="field">
-    <%= f.label :post_colour %><br />
-    <%= f.text_field :post_colour, :class => "color" %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :font_colour %>
-  </div>
+    <div class="field">
+      <%= f.label :show_name %>
+      <%= f.check_box :show_name %>
+    </div>
+    <div class="field">
+      <%= f.label :show_email %>
+      <%= f.check_box :show_email %>
+    </div>
+    <!-- <div class="field">
+      <%= f.label :birthday %>
+      <%= f.date_select :birthday %>
+    </div>
+    <div class="field">
+      <%= f.label :show_year %>
+      <%= f.check_box :show_year %>
+    </div> -->
+  	<div class="field">
+  		<%= f.label :bio %><br />
+  		<%= f.text_area :bio %>
+  	</div>
+  	<div class="field">
+  		<%= f.label :signature %><br />
+  		<%= f.text_area :signature %>
+  	</div>
+    <script type="text/javascript" src="/assets/jscolor/jscolor.js"></script>
+    <div class="field">
+      <%= f.label :post_colour %><br />
+      <%= f.text_field :post_colour, :class => "color" %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :font_colour %>
+    </div>
   <% end %>
   
   <div class="actions">
