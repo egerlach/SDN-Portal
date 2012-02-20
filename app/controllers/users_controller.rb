@@ -64,6 +64,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 	@user.userid = session[:cas_user]
+	@user.post_colour = "913533"
+	@user.font_colour = "eeeeee"
+
 	if !current_user
 		respond_to do |format|
 		  if @user.save

@@ -46,6 +46,9 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
+
+        @category = Category.create(:name => @project.name, :forum_id => Forum.find_by_name("Projects").id)
+
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else

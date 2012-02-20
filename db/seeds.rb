@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Page.create(:name => "About")
+Forum.create(:name => "General Discussion", :description => "General SDN stuff")
+Forum.create(:name => "Projects", :description => "Talk about your projects, entice people, etc.")
+Forum.create(:name => "Off Topic", :description => "Everything Else")

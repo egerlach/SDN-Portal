@@ -143,63 +143,105 @@ h5 {
 	}
 }	
 
-.fpost_tools {
-	height: 20px;
-	width: 100%;
-	background-color: $colour_four;
-	list-style-type: none;
-	margin: 0 0 5px 0;
-	padding: 0;
-	li {
-		float: left;
-		height: 100%;
-		a {
-			text-align:center;
-			display: block;
-			width: 75px;
-			height: 100%;
-			font-size: 10px;
-			color: #eeeeee;
-			&:hover {background-color: darken($colour_four, 10%);}
-		}
-	}
-}
-
 .forum_spacer {
 	width: 100%;
 	height: 25px;
 }
 
 .fpost_content {
-	width: 100%;
-	height: 100%;
-	background-color: #ffffff;
+	background-color: $colour_four;
+	color: #eeeeee;
+	padding: 5px;
 }
 
-.fpost_header {
-	width: 100%;
-	background-color: #dddddd;
+.fpost_date {
+	height: 15px;
+	font-size: 14px;
 	color: #333333;
-	margin: 0;
-	overflow: hidden;
-	.col2 {
+	.date_to_left {
+		float: left;
+	}
+	.fpost_number {
+		float: right;
+	}
+}
+
+.fpost_user_right {
+	height: 60px;
+	.user_arrow {
+		display: block;
+		width: 40px;
+		height: 40px;
+		background-color: $colour_four;
+		float: right;
+		margin-right: 100px;
+		background-image: url('/assets/fpost_mask_right.png');
+	}
+	.user_photo {
+		display: block;
+		height: 50px;
+		width: 50px;
+		margin-top: 10px;
+		margin-right: 10px;
+		float: right;
+	}
+	.fpost_user {
+		margin-top: 10px;
+		height: 50px;
 		display: block;
 		float: right;
-		width: 400px;
-		text-align: right;
-		position: relative;
-		bottom: 18px;
+		margin-right: 10px;
+		.fpost_username {
+			font-size: 20px;
+			font-weight: bold;
+			text-align: right;
+		}
+		.online_box {
+			width: 5px;
+			height: 5px;
+			background-color: green;
+			float: left;
+			margin: 7px 5px 0px 10px;
+		}
 	}
-	a {
-		color: #444444;
-		&:hover {color: #913533;}
+}
+
+.fpost_user_left {
+	height: 60px;
+	.user_arrow {
+		display: block;
+		width: 40px;
+		height: 40px;
+		background-color: $colour_four;
+		float: left;
+		margin-left: 100px;
+		background-image: url('/assets/fpost_mask_left.png');
 	}
-	h2 {
-		margin: 5px 0 0 0;
-		font-size: 1.5em;
+	.user_photo {
+		display: block;
+		height: 50px;
+		width: 50px;
+		margin-top: 10px;
+		margin-left: 10px;
+		float: left;
 	}
-	h3 {
-		margin: 0 0 0 20px;
-		font-size: 0.9em;
+	.fpost_user {
+		margin-top: 10px;
+		height: 50px;
+		display: block;
+		float: left;
+		margin-left: 10px;
+		.fpost_username {
+			font-size: 20px;
+			font-weight: bold;
+			text-align: left;
+		}
+		.online_box {
+			width: 5px;
+			height: 5px;
+			background-color: green;
+			float: left;
+			margin: 7px 5px 0px 10px;
+		}
 	}
 }

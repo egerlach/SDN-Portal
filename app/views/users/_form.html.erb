@@ -16,7 +16,7 @@
     <%= f.text_field :username %>
   </div>
   <div class="field">
-    <%= f.label :first_name %><br />
+    * <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </div>
   <div class="field">
@@ -24,19 +24,47 @@
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    * <%= f.label :email %><br />
     <%= f.email_field :email %>
   </div>
   
   <% if @user.username %>
-	<div class="field">
-		<%= f.label :bio %><br />
-		<%= f.text_area :bio %>
-	</div>
-	<div class="field">
-		<%= f.label :signature %><br />
-		<%= f.text_area :signature %>
-	</div>
+    <div class="field">
+      <a href="http://gravatar.com/emails/" target="_blank">Change gravatar:<br />
+      <%= image_tag avatar_url(@user) %></a>
+    </div>
+    <div class="field">
+      <%= f.label :show_name %>
+      <%= f.check_box :show_name %>
+    </div>
+    <div class="field">
+      <%= f.label :show_email %>
+      <%= f.check_box :show_email %>
+    </div>
+    <!-- <div class="field">
+      <%= f.label :birthday %>
+      <%= f.date_select :birthday %>
+    </div>
+    <div class="field">
+      <%= f.label :show_year %>
+      <%= f.check_box :show_year %>
+    </div> -->
+  	<div class="field">
+  		<%= f.label :bio %><br />
+  		<%= f.text_area :bio %>
+  	</div>
+  	<div class="field">
+  		<%= f.label :signature %><br />
+  		<%= f.text_area :signature %>
+  	</div>
+    <script type="text/javascript" src="/assets/jscolor/jscolor.js"></script>
+    <div class="field">
+      <%= f.label :post_colour %><br />
+      <%= f.text_field :post_colour, :class => "color" %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :font_colour %>
+    </div>
   <% end %>
   
   <div class="actions">

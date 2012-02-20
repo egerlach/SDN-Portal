@@ -48,3 +48,19 @@ h1 {
 		text-align: left;
 	}
 }
+
+.userpage_header {
+	display: block;
+	height: 60px;
+	.userpage_gravatar {
+		float: left;
+	}
+	.userpage_name {
+		float: left;
+		margin-left: 20px;
+		margin-top: 10px;
+		.userpage_realname {
+			color: #bbbbbb;
+		}
+	}
+}
