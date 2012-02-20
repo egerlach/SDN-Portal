@@ -15,7 +15,7 @@
 		
 		<div class="fpost_date">
 			<span class="date_to_left"><%= fpost.created_at.strftime("%B %d %Y %I:%M %p") %></span>
-			<span class="fpost_number">#1</span>
+			<span class="fpost_number">#<%= fpost.post_number.to_s %></span>
 		</div>
 
 		<div class="fpost_content" style=<%= user_post_styles(fpost.user) %>>

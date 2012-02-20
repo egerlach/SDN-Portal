@@ -39,7 +39,8 @@ class ForumpostsController < ApplicationController
   # POST /forumposts.json
   def create
     @forumpost = Forumpost.new(params[:forumpost])
-	@forumpost.user = current_user
+	  @forumpost.user = current_user
+    @forumpost.post_number = @forumpost.topic.forumposts.count + 1
 
     respond_to do |format|
       if @forumpost.save
