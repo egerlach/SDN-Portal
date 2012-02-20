@@ -30,6 +30,10 @@
   
   <% if @user.username %>
     <div class="field">
+      <a href="http://gravatar.com/emails/" target="_blank">Change gravatar:<br />
+      <%= image_tag avatar_url(@user) %></a>
+    </div>
+    <div class="field">
       <%= f.label :show_name %>
       <%= f.check_box :show_name %>
     </div>
