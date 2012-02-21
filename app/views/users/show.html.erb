@@ -30,6 +30,6 @@
 
 	<strong>Bio:</strong> <%= @user.bio %><br /><br />
 	<strong>Signature:</strong><br />
-	<div style=<%= user_post_styles(@user) %>><%= safer_content(@user.signature).html_safe %></div>
+	<%= safer_content(@user.signature).html_safe %>
 
 </div>
