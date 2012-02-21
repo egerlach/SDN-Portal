@@ -1,34 +1,6 @@
 class ForumpostsController < ApplicationController
-  before_filter CASClient::Frameworks::Rails::Filter, :except => [ :show, :index ]
-  before_filter :user_exists?, :except => [ :show, :index ]
-
-  # GET /forumposts/1
-  # GET /forumposts/1.json
-  def show
-    @forumpost = Forumpost.find(params[:id])
-	@topic = params[:topic] ? Topic.find(params[:topic]) : Topic.first
-	@category = @topic.category
-	@forum = @category.forum
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @forumpost }
-    end
-  end
-
-  # GET /forumposts/new
-  # GET /forumposts/new.json
-  def new
-    @forumpost = Forumpost.new
-	@topic = params[:topic] ? Topic.find(params[:topic]) : Topic.first
-	@category = @topic.category
-	@forum = @category.forum
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @forumpost }
-    end
-  end
+  before_filter CASClient::Frameworks::Rails::Filter
+  before_filter :user_exists?
 
   # GET /forumposts/1/edit
   def edit

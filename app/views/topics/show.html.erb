@@ -14,7 +14,14 @@
 	<% @forumposts.each do |fpost| %>
 		
 		<div class="fpost_date">
-			<span class="date_to_left"><%= fpost.created_at.strftime("%B %d %Y %I:%M %p") %></span>
+			<span class="date_to_left"><%= fpost.created_at.strftime("%B %d %Y %I:%M %p") %> <% if fpost.created_at != fpost.updated_at %>
+					Edited on: <%= fpost.updated_at.strftime("%B %d %Y %I:%M %p") %>
+				<% end %>
+			</span>
+			<% if fpost.user == current_user || current_user.admin %>
+				<%= link_to "Edit", edit_forumpost_path(fpost) %>
+				<%= link_to "Delete", fpost, confirm: 'Are you sure?', method: :delete %>
+			<% end %>
 			<span class="fpost_number">#<%= fpost.post_number.to_s %></span>
 		</div>
 
@@ -53,31 +60,6 @@
 				</div>
 			</div>
 		<% end %>
-
-		<!--<div class="fpost_header">
-			<h2><%= link_to fpost.user.username, fpost.user %></h2>
-			<div class="col2">
-				Member since: <%= fpost.user.created_at.strftime("%B %d %Y") %><br/>
-				Posts: <%= fpost.user.forumposts.count %>
-			</div>
-			<h3><%= fpost.created_at.strftime("%B %d %Y %I:%M %p") %></h3>
-		</div>
-		
-		<div class="fpost_content">
-			<%= safe_content(fpost.content).html_safe %>
-			<% if fpost.user.signature != "" %>
-				<hr />
-				<%= safer_content(fpost.user.signature).html_safe %>
-			<% end %>
-		</div>
-		
-		 <% if fpost.user == current_user || current_user.admin %>
-			<ul class="fpost_tools">
-				<li><%= link_to "Post", fpost %></li>
-				<li><%= link_to "Edit", edit_forumpost_path(fpost) %></li>
-				<li><%= link_to "Delete", fpost, confirm: 'Are you sure?', method: :delete %></li>
-			</ul>
-		<% end %> -->
 		
 		<div class="forum_spacer"></div>
 
