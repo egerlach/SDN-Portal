@@ -1,6 +1,4 @@
-<h1><%= @user.username %></h1>
 
-<%= user_navigation_bar %>
 <div class="user_wrapper">
 	
 	<div class="userpage_header">
@@ -11,6 +9,8 @@
 		<div class="userpage_name">
 			<h1><%= @user.username %> <% if @user.show_name || is_admin? %><span class="userpage_realname">(<%= @user.first_name + ' ' + @user.last_name %>)</span><% end %></h1>
 		</div>
+
+		<%= user_navigation_bar %>
 	</div>
 	<hr />
 
@@ -29,6 +29,7 @@
 	<br />
 
 	<strong>Bio:</strong> <%= @user.bio %><br /><br />
-	<strong>Signature:</strong> <%= safer_content(@user.signature) %>
+	<strong>Signature:</strong><br />
+	<div style=<%= user_post_styles(@user) %>><%= safer_content(@user.signature).html_safe %></div>
 
 </div>

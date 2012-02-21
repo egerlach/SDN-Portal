@@ -6,8 +6,8 @@ $colour_five: #911215;
 $colour_six: #770F12;
 
 body {
-  background-color: #333333;
-  color: #ffffff;
+  background-color: #eeeeee;
+  color: #333333;
   //background-image: url('/assets/woodbg.png');
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -27,18 +27,25 @@ pre {
   font-size: 11px; }
 
 a {
-  color: #000;
-  text-decoration:none;
+	color: #444444;
+  	text-decoration:none;
   &:visited {
     color: #666;
 	text-decoration:none;}
   &:hover {
-    color: #fff;
+    color: #913533;
 	text-decoration:none;} }
 
 div {
   &.field, &.actions {
     margin-bottom: 10px; } }
+
+h1 {
+	display: block;
+	font-size: 2em;
+	margin: 5px 0 15px 0;
+	font-weight: bold;
+}
 
 #notice {
   color: green; }
@@ -82,6 +89,7 @@ div {
 		font-family: "Lucida Console", "Monaco5", monospace;
 		font-size: 60px;
 		margin-top: 60px;
+		color: #eeeeee;
 		.port1 {color: blue;}
 		.port2 {color: orange;}
 		.beta_tag {
