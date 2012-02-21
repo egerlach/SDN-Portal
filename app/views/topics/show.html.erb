@@ -2,7 +2,7 @@
 
 <h1><%= link_to @topic.title, @topic %> in <%= link_to @category.name, @category %></h1>
 
-<div class="forum_extra_nav"><%= link_to "New Post", new_forumpost_path(:topic => @topic.id) %></div>
+<div class="forum_extra_nav"><a href="#new_forumpost">Reply</a></div>
 <div class="digg_pagination">
     <%= will_paginate @forumposts %>
 </div>
@@ -84,11 +84,47 @@
 		<% i = i + 1 %>
 	<% end %>
 	
-<div class="forum_extra_nav"><%= link_to "New Post", new_forumpost_path(:topic => @topic.id) %></div>
 <div class="digg_pagination">
     <%= will_paginate @forumposts, :container => false %>
 </div>
 <div class="forum_spacer"></div>
+
+<%= form_for(@forumpost) do |f| %>
+	<% if @forumpost.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@forumpost.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+			<ul>
+			<% @forumpost.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div class="fpost_field">
+	  <script type="text/javascript" src="/assets/tiny_mce/tiny_mce.js" ></script>
+	  <script type="text/javascript" >
+		tinyMCE.init({
+		        mode : "textareas",
+		        theme : "advanced",
+		        plugins : "autolink, lists",
+
+		        theme_advanced_buttons1 : "bold,italic,|,bullist,numlist,|,link,unlink,image,code",
+		        theme_advanced_buttons2 : "",
+		        theme_advanced_buttons3 : "",
+		        theme_advanced_buttons4 : "",
+		        theme_advanced_toolbar_location : "bottom"
+		});
+	  </script >
+		<%= f.text_area :content, :class => "fpost_field" %>
+	</div>
+	<%= f.hidden_field(:topic_id, :value => @topic.id) %>
+	<div class="actions">
+		<%= f.submit "Reply" %>
+	</div>
+	<span id="new_forumpost"></span>
+<% end %>
 
 </div>
 <%= forum_navigation_bar %>

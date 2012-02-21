@@ -25,7 +25,8 @@ module ApplicationHelper
 	# Applies the relaxed sanitize filter on the html
 	def safe_content content
 		html = "" + content.to_s
-		Sanitize.clean(html, Sanitize::Config::RELAXED)
+		Sanitize.clean(html, :elements => %w[ul ol br cite code em i p strike strong b a => [href title] img => [alt src title width height] li h1 h2 h3 h4 h5 h6],
+		:attributes => {'a' => ['href', 'title'], 'img' => ['alt', 'src', 'title']})
 	end
 	
 	# Applies the basic sanitize filter on the html.

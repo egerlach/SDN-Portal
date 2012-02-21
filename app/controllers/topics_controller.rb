@@ -11,6 +11,7 @@ class TopicsController < ApplicationController
 	@category = @topic.category
 	@forum = @category.forum
 	@forumposts =  @topic.forumposts.order(:created_at).paginate(:page => params[:page], :per_page => 6)
+	@forumpost = Forumpost.new
 
     respond_to do |format|
       format.html # show.html.erb
