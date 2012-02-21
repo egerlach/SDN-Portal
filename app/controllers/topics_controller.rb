@@ -11,6 +11,7 @@ class TopicsController < ApplicationController
 	@category = @topic.category
 	@forum = @category.forum
 	@forumposts =  @topic.forumposts.order(:created_at).paginate(:page => params[:page], :per_page => 6)
+	@forumpost = Forumpost.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,34 +45,13 @@ class TopicsController < ApplicationController
     @topic = Topic.new(params[:topic])
 	@topic.user = current_user
 	
-	#@forumpost = Forumpost.new
-	#@forumpost.content = params[:forumpost][:content]
-	#@forumpost.user = current_user
-	#@forumpost.topic = @topic
-    #
-    #respond_to do |format|
-    #  if @forumpost.save && @topic.save
-	#	format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
-	#	format.json { render json: @topic, status: :created, location: @topic }
-	#  else
-	#	if @forumpost.save
-	#		@forumpost.destroy
-	#		format.html { render action: "new", :category => params[:topic][:category] }
-	#		format.json { render json: @topic.errors, status: :unprocessable_entity }
-	#	else
-	#		@topic.errors[:base] << "The first post must have content."
-	#		format.html { render action: "new" }
-	#		format.json { render json: @topic.errors, status: :unprocessable_entity }
-	#	end
-    #  end
-    #end
-	
 	respond_to do |format|
       if @topic.save
 		@forumpost = Forumpost.new
 		@forumpost.content = params[:forumpost][:content]
 		@forumpost.user = current_user
 		@forumpost.topic = @topic
+		@forumpost.post_number = 1
 		
 		if @forumpost.save
 			format.html { redirect_to @topic, notice: 'Topic was successfully created.' }

@@ -152,6 +152,12 @@ h5 {
 	background-color: $colour_four;
 	color: #eeeeee;
 	padding: 5px;
+	ol {
+		list-style-type: decimal;
+	}
+	ul {
+		list-style-type: circle;
+	}
 }
 
 .fpost_date {
@@ -163,6 +169,9 @@ h5 {
 	}
 	.fpost_number {
 		float: right;
+	}
+	a {
+		margin-left: 10px;
 	}
 }
 
@@ -188,13 +197,14 @@ h5 {
 	.fpost_user {
 		margin-top: 10px;
 		height: 50px;
+		width: 775px;
 		display: block;
-		float: right;
-		margin-right: 10px;
+		float: left;
 		.fpost_username {
 			font-size: 20px;
 			font-weight: bold;
 			text-align: right;
+			float: right;
 		}
 		.online_box {
 			width: 5px;
@@ -202,6 +212,10 @@ h5 {
 			background-color: green;
 			float: left;
 			margin: 7px 5px 0px 10px;
+		}
+		.fpost_member_since {
+			float: left;
+			text-align: left;
 		}
 	}
 }
@@ -228,13 +242,14 @@ h5 {
 	.fpost_user {
 		margin-top: 10px;
 		height: 50px;
+		width: 775px;
 		display: block;
-		float: left;
-		margin-left: 10px;
+		float: right;
 		.fpost_username {
 			font-size: 20px;
 			font-weight: bold;
 			text-align: left;
+			float: left;
 		}
 		.online_box {
 			width: 5px;
@@ -243,5 +258,14 @@ h5 {
 			float: left;
 			margin: 7px 5px 0px 10px;
 		}
+		.fpost_member_since {
+			float: right;
+			text-align: right;
+		}
 	}
+}
+
+.fpost_field {
+	width: 100%;
+	min-height: 200px;
 }

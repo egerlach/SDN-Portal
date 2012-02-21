@@ -2,7 +2,7 @@
 
 <h1><%= link_to @topic.title, @topic %> in <%= link_to @category.name, @category %></h1>
 
-<div class="forum_extra_nav"><%= link_to "New Post", new_forumpost_path(:topic => @topic.id) %></div>
+<div class="forum_extra_nav"><a href="#new_forumpost">Reply</a></div>
 <div class="digg_pagination">
     <%= will_paginate @forumposts %>
 </div>
@@ -14,8 +14,15 @@
 	<% @forumposts.each do |fpost| %>
 		
 		<div class="fpost_date">
-			<span class="date_to_left"><%= fpost.created_at.strftime("%B %d %Y %I:%M %p") %></span>
-			<span class="fpost_number">#1</span>
+			<span class="date_to_left"><%= fpost.created_at.strftime("%B %d %Y %I:%M %p") %> <% if fpost.created_at != fpost.updated_at %>
+					Edited on: <%= fpost.updated_at.strftime("%B %d %Y %I:%M %p") %>
+				<% end %>
+			</span>
+			<% if fpost.user == current_user || current_user.admin %>
+				<%= link_to "Edit", edit_forumpost_path(fpost) %>
+				<%= link_to "Delete", fpost, confirm: 'Are you sure?', method: :delete %>
+			<% end %>
+			<span class="fpost_number">#<%= fpost.post_number.to_s %></span>
 		</div>
 
 		<div class="fpost_content" style=<%= user_post_styles(fpost.user) %>>
@@ -33,8 +40,9 @@
 					<%= image_tag avatar_url(fpost.user) %>
 				</div>
 				<div class="fpost_user">
-					<span class="fpost_username"><%= link_to fpost.user.username, fpost.user %></span><br />
-					<div class="online_box"></div> Online
+					<div class="fpost_username"><%= link_to fpost.user.username, fpost.user %></div>
+					<!-- <div class="online_box"></div> Online -->
+					<div class="fpost_member_since">Member since: <%= fpost.user.created_at.strftime("%B %d, %Y") %><br/>Posts: <%= fpost.user.forumposts.count %></div>
 				</div>
 			</div>
 		<% else %>
@@ -46,47 +54,59 @@
 					<%= image_tag avatar_url(fpost.user) %>
 				</div>
 				<div class="fpost_user">
-					<span class="fpost_username"><%= link_to fpost.user.username, fpost.user %></span><br />
-					<div class="online_box"></div> Online
+					<div class="fpost_username"><%= link_to fpost.user.username, fpost.user %></div>
+					<!-- <div class="online_box"></div> Online -->
+					<div class="fpost_member_since">Member since: <%= fpost.user.created_at.strftime("%B %d, %Y") %><br/>Posts: <%= fpost.user.forumposts.count %></div>
 				</div>
 			</div>
 		<% end %>
-
-		<!--<div class="fpost_header">
-			<h2><%= link_to fpost.user.username, fpost.user %></h2>
-			<div class="col2">
-				Member since: <%= fpost.user.created_at.strftime("%B %d %Y") %><br/>
-				Posts: <%= fpost.user.forumposts.count %>
-			</div>
-			<h3><%= fpost.created_at.strftime("%B %d %Y %I:%M %p") %></h3>
-		</div>
-		
-		<div class="fpost_content">
-			<%= safe_content(fpost.content).html_safe %>
-			<% if fpost.user.signature != "" %>
-				<hr />
-				<%= safer_content(fpost.user.signature).html_safe %>
-			<% end %>
-		</div>
-		
-		 <% if fpost.user == current_user || current_user.admin %>
-			<ul class="fpost_tools">
-				<li><%= link_to "Post", fpost %></li>
-				<li><%= link_to "Edit", edit_forumpost_path(fpost) %></li>
-				<li><%= link_to "Delete", fpost, confirm: 'Are you sure?', method: :delete %></li>
-			</ul>
-		<% end %> -->
 		
 		<div class="forum_spacer"></div>
 
 		<% i = i + 1 %>
 	<% end %>
 	
-<div class="forum_extra_nav"><%= link_to "New Post", new_forumpost_path(:topic => @topic.id) %></div>
 <div class="digg_pagination">
     <%= will_paginate @forumposts, :container => false %>
 </div>
 <div class="forum_spacer"></div>
+
+<%= form_for(@forumpost) do |f| %>
+	<% if @forumpost.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@forumpost.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+			<ul>
+			<% @forumpost.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div class="fpost_field">
+	  <script type="text/javascript" src="/assets/tiny_mce/tiny_mce.js" ></script>
+	  <script type="text/javascript" >
+		tinyMCE.init({
+		        mode : "textareas",
+		        theme : "advanced",
+		        plugins : "autolink, lists",
+
+		        theme_advanced_buttons1 : "bold,italic,|,bullist,numlist,|,link,unlink,image,code",
+		        theme_advanced_buttons2 : "",
+		        theme_advanced_buttons3 : "",
+		        theme_advanced_buttons4 : "",
+		        theme_advanced_toolbar_location : "bottom"
+		});
+	  </script >
+		<%= f.text_area :content, :class => "fpost_field" %>
+	</div>
+	<%= f.hidden_field(:topic_id, :value => @topic.id) %>
+	<div class="actions">
+		<%= f.submit "Reply" %>
+	</div>
+	<span id="new_forumpost"></span>
+<% end %>
 
 </div>
 <%= forum_navigation_bar %>
