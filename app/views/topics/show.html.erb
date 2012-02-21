@@ -33,8 +33,9 @@
 					<%= image_tag avatar_url(fpost.user) %>
 				</div>
 				<div class="fpost_user">
-					<span class="fpost_username"><%= link_to fpost.user.username, fpost.user %></span><br />
-					<div class="online_box"></div> Online
+					<div class="fpost_username"><%= link_to fpost.user.username, fpost.user %></div>
+					<!-- <div class="online_box"></div> Online -->
+					<div class="fpost_member_since">Member since: <%= fpost.user.created_at.strftime("%B %d, %Y") %><br/>Posts: <%= fpost.user.forumposts.count %></div>
 				</div>
 			</div>
 		<% else %>
@@ -46,8 +47,9 @@
 					<%= image_tag avatar_url(fpost.user) %>
 				</div>
 				<div class="fpost_user">
-					<span class="fpost_username"><%= link_to fpost.user.username, fpost.user %></span><br />
-					<div class="online_box"></div> Online
+					<div class="fpost_username"><%= link_to fpost.user.username, fpost.user %></div>
+					<!-- <div class="online_box"></div> Online -->
+					<div class="fpost_member_since">Member since: <%= fpost.user.created_at.strftime("%B %d, %Y") %><br/>Posts: <%= fpost.user.forumposts.count %></div>
 				</div>
 			</div>
 		<% end %>
