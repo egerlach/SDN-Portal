@@ -15,7 +15,6 @@
 				</div>
 			</div>
 			
-			<hr />
 			<% if np.content.length > 1000 %>
 				<%= safe_content(np.content).html_safe[0..999] + '...' %>
 				<%= link_to "Read More", np %>
