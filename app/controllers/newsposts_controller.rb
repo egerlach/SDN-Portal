@@ -21,6 +21,7 @@ class NewspostsController < ApplicationController
     @newspost = Newspost.find(params[:id])
 	@comment = Comment.new
 	@comments = Comment.where(:newspost_id => params[:id]).order(:created_at)
+	@tags = @newspost.tags
 
     respond_to do |format|
       format.html # show.html.erb

@@ -26,6 +26,16 @@
 				<%= safe_content(np.content).html_safe %>
 			<% end %>
 
+			<div class="news_tags">
+				<ul class="news_tag_list">
+				<% np.tags.each do |t| %>
+
+					<li><%= link_to t.name, root_path(:search => t.name) %></li>
+
+				<% end %>
+				</ul>
+			</div>
+
 		<% end %>
 
 		<%= newspost_navigation_bar %>

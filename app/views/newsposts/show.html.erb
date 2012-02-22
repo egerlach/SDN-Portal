@@ -10,6 +10,17 @@
 	</div>
 	
 	<%= safe_content(@newspost.content).html_safe %>
+
+	<div class="news_tags">
+		<ul class="news_tag_list">
+		<% @tags.each do |t| %>
+
+			<li><%= link_to t.name, root_path(:search => t.name) %></li>
+
+		<% end %>
+		</ul>
+	</div>
+
 	<hr />
 	
 	<strong><%= @comments.count %> Comments</strong>
