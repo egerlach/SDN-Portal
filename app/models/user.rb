@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 	validates :userid, :presence => true
 	validates :first_name, :presence => true
 	validates :email, :presence => true
+	validates :signature, :length => { :maximum => 100 }
 	validates_format_of :post_colour, :with => /^(([a-fA-F0-9]){3}){1,2}$/
 	validates_format_of :font_colour, :with => /^(([a-fA-F0-9]){3}){1,2}$/
 end

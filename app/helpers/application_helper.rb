@@ -33,7 +33,8 @@ module ApplicationHelper
 	# Safer than safe_content
 	def safer_content content
 		html = "" + content.to_s
-		Sanitize.clean(html, Sanitize::Config::BASIC)
+		Sanitize.clean(html, :elements => %w[em i p br strong b a => [href title] h4 h5 h6],
+		:attributes => {'a' => ['href', 'title']})
 	end
 
 	# Gets current_user for use in the views

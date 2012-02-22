@@ -3,36 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $colour_two: #c96d37;
 
-h1 {
-	display: block;
-	font-size: 2em;
-	margin: 5px 0 15px 0;
-	font-weight: bold;
-}
-
 .user_wrapper {
-	background-color: #eeeeee;
-	color: #333333;
 	margin: 0;
 	padding: 15px;
-	a {
-		color: #444444;
-		&:hover {color: #913533;}
-	}
 }
 .user_nav {
 	height: 20px;
-	width: 100%;
-	background-color: $colour_two;
+	float: right;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	li {
 		float: left;
 		height: 100%;
+		margin-top: 18px;
 		a {
 			text-align:center;
 			display: block;
+			background-color: $colour_two;
 			width: 60px;
 			height: 100%;
 			font-size: 10px;

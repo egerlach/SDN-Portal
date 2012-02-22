@@ -21,6 +21,7 @@ class NewspostsController < ApplicationController
     @newspost = Newspost.find(params[:id])
 	@comment = Comment.new
 	@comments = Comment.where(:newspost_id => params[:id]).order(:created_at)
+	@tags = @newspost.tags
 
     respond_to do |format|
       format.html # show.html.erb
@@ -57,6 +58,17 @@ class NewspostsController < ApplicationController
     @newspost = Newspost.new(params[:newspost])
 	curr_user = current_user
 	@newspost.user_id = curr_user.id
+
+	if params[:tags]
+		post_tags = params[:tags].gsub(/\s+/, "").split(',')
+		post_tags.each do |t|
+			tag = Tag.where(:name => t)
+			if tag.empty?
+				tag = Tag.create(:name => t)
+			end
+			@newspost.tags << tag
+		end
+	end
 
 	respond_to do |format|
 	  if @newspost.save
