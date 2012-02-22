@@ -30,7 +30,7 @@
 				<ul class="news_tag_list">
 				<% np.tags.each do |t| %>
 
-					<li><%= link_to t.name, root_path(:search => t.name) %></li>
+					<li><%= link_to t.name, root_path(:tag => t.name) %></li>
 
 				<% end %>
 				</ul>
