@@ -58,6 +58,17 @@ class NewspostsController < ApplicationController
 	curr_user = current_user
 	@newspost.user_id = curr_user.id
 
+	if params[:tags]
+		post_tags = params[:tags].gsub(/\s+/, "").split(',')
+		post_tags.each do |t|
+			tag = Tag.where(:name => t)
+			if tag.empty?
+				tag = Tag.create(:name => t)
+			end
+			@newspost.tags << tag
+		end
+	end
+
 	respond_to do |format|
 	  if @newspost.save
 		format.html { redirect_to @newspost, notice: 'Newspost was successfully created.' }

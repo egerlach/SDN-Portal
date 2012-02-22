@@ -7,22 +7,21 @@ module NewspostsHelper
 		
 		if curr_user
 			html << '<ul class="newspost_nav">'.html_safe
-			if @newspost && @newspost.id
+			if @newspost && @newspost.id && (@newspost.user_id == curr_user.id || curr_user.admin)
 				html << '<li>'.html_safe
 				html << (link_to "Post", newspost_path(@newspost)).html_safe
 				html << '</li><li>'.html_safe
 					
-				if @newspost.user_id == curr_user.id || curr_user.admin
-					html << '<li>'.html_safe
-					html << (link_to "Edit Post", edit_newspost_path(@newspost)).html_safe
-					html << '</li><li>'.html_safe
-				end
+				html << '<li>'.html_safe
+				html << (link_to "Edit Post", edit_newspost_path(@newspost)).html_safe
+				html << '</li><li>'.html_safe
 			end
 			
-			html << '<li>'.html_safe
-			html << (link_to "New News", new_newspost_path).html_safe
-			html << '</li><li>'.html_safe
-			
+			if !(request.url.include? "newsposts/new")
+				html << '<li>'.html_safe
+				html << (link_to "New News", new_newspost_path).html_safe
+				html << '</li><li>'.html_safe
+			end
 				#html << '<li>'.html_safe
 				#html << (link_to "Archive", newsposts_path).html_safe
 				#html << '</li>'.html_safe
