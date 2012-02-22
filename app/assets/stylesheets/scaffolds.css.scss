@@ -189,16 +189,16 @@ h1 {
 
 
 .newspost_wrapper {
-	background-color: #eeeeee;
-	color: #333333;
 	margin: 0;
 	overflow: hidden;
-	padding: 5px 15px 15px 15px;
+	padding: 5px 0px 15px 0px;
 	a {
 		color: #444444;
 		&:hover {color: #913533;}
 	}
 	.news_header {
+		width: 100%;
+		height: 43px;
 		h2 {
 			margin: 5px 0 0 0;
 			font-size: 1.5em;
@@ -206,6 +206,12 @@ h1 {
 		h3 {
 			margin: 0 0 0 20px;
 			font-size: 0.9em;
+		}
+		.news_header_text {
+			float: left;
+		}
+		.news_header_gravatar {
+			float: right;
 		}
 	}
 }
