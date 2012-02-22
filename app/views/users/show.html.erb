@@ -10,7 +10,9 @@
 			<h1><%= @user.username %> <% if @user.show_name || is_admin? %><span class="userpage_realname">(<%= @user.first_name + ' ' + @user.last_name %>)</span><% end %></h1>
 		</div>
 
-		<%= user_navigation_bar %>
+		<% if @user == current_user || is_admin? %>
+			<%= user_navigation_bar %>
+		<% end %>
 	</div>
 	<hr />
 
@@ -23,7 +25,7 @@
 	<strong>Real Name:</strong> <% if @user.show_name || is_admin? %><%= @user.first_name + " " + @user.last_name %><% else %>hidden<% end %><br />
 	<strong>Email:</strong> <% if @user.show_email || is_admin? %><%= @user.email %><% else %>hidden<% end %><br />
 	<strong>Member Since:</strong> <%= @user.created_at.strftime("%B %d, %Y") %><br /><br />
-	
+
 	<strong>News Post Count:</strong> <%= @user.newsposts.count %><br />
 	<strong>Thread Count:</strong> <%= @user.topics.count %><br />
 	<strong>Forum Post Count:</strong> <%= @user.forumposts.count %><br />

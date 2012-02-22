@@ -1,8 +1,12 @@
 <div class="home_first_column">
 	<div class="newspost_wrapper">
-		<div class="digg_pagination">
-		<%= will_paginate @newses, :page_links => false %>
+		<div class="newspost_nav_block">
+			<%= newspost_navigation_bar %>
+			<div class="digg_pagination">
+				<%= will_paginate @newses, :page_links => false %>
+			</div>
 		</div>
+
 		<% @newses.each do |np| %>
 		
 			<div class="news_header">
@@ -25,11 +29,11 @@
 
 
 		<% end %>
+		<%= newspost_navigation_bar %>
 		<div class="digg_pagination">
 		<%= will_paginate @newses, :page_links => false %>
 		</div>
 	</div>
-	<%= newspost_navigation_bar %>
 	
 </div>
 
