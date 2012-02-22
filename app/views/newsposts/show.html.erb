@@ -45,8 +45,12 @@
 		<div class="comment_header">
 			<h4>by <%= link_to c.user.username, user_path(c.user) %> on <%= c.created_at.strftime("%B %d, %Y") %></h4>
 		</div>
-		<%= c.content %>
-		<% if current_user.admin || current_user.id == c.user_id %>
+
+		<span class="comment_content" style=<%= user_post_styles(c.user) %>>
+			<%= c.content %>
+		</span><br /><br />
+
+		<% if current_user && (current_user.admin || current_user.id == c.user_id) %>
 			<%= link_to "Delete Comment", c, confirm: 'Are you sure?', method: :delete %>
 		<% end %>
 	
