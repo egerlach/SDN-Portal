@@ -26,9 +26,8 @@
 				<%= safe_content(np.content).html_safe %>
 			<% end %>
 
-
-
 		<% end %>
+
 		<%= newspost_navigation_bar %>
 		<div class="digg_pagination">
 		<%= will_paginate @newses, :page_links => false %>
@@ -37,57 +36,11 @@
 	
 </div>
 
-<!--<div class="home_second_column">
-
-<div class="home_event_month">
-	<%= link_to "<", :month => (@days[0]-1.days) %>
-	<%= @today.strftime("%B") %> <%= @year %>
-	<%= link_to ">", :month => (@days.last+1.days) %>
+<div class="home_second_column">
+	<div class="newspost_search">
+		<%= form_tag(root_path, :method => "get") do %>
+			<%= text_field_tag(:search, params[:search]) %>
+			<%= submit_tag("Search") %>
+		<% end %>
+	</div>
 </div>
-
-<table class="home_calendar">
-	<tr>
-		<th>S</th>
-		<th>M</th>
-		<th>T</th>
-		<th>W</th>
-		<th>T</th>
-		<th>F</th>
-		<th>S</th>
-	</tr>
-	
-	<% if @first_day_of_month != 0 %>
-	
-		<tr>
-		<% for i in (0..(@first_day_of_month-1)) %>
-			<td></td>
-		<% end %>
-		
-	<% end %>
-	
-		<% for i in (0..(@days_in_month-1)) %>
-			<% if @days[i].wday == 0 %>
-				<tr>
-			<% end %>
-			
-			<% event_num = @events_in_month.index{|ev| ev.start_at.day == i+1} %>
-			<% if event_num != nil %>
-				<td class="event_date"><%= link_to i+1, event_path(@events_in_month.fetch(event_num)), :class => "event_date", :alt => @events_in_month.fetch(event_num).blurb, :title => @events_in_month.fetch(event_num).name + " / " + @events_in_month.fetch(event_num).blurb %></td>
-			<% else %>
-				<td><%= i+1 %></td>
-			<% end %>
-			
-			<% if @days[i].wday == 6 %>
-				</tr>
-			<% end %>
-		<% end %>
-		
-	<% if @last_day_of_month != 6 %>
-		<% for i in ((@last_day_of_month+1)..6) %>
-			<td></td>
-		<% end %>
-		</tr>
-	<% end %>
-</table>
-
-</div> -->
