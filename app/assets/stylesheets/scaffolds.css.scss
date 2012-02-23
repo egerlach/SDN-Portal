@@ -47,6 +47,23 @@ h1 {
 	font-weight: bold;
 }
 
+h2 {
+	display: block;
+	font-size: 1.5em;
+	margin: 4px 0 10px 0;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 0.9em;
+	margin: 0;
+}
+
+h4 {
+	font-size: 0.8em;
+	margin: 0;
+}
+
 #notice {
   color: green; }
 
@@ -185,4 +202,19 @@ h1 {
 .content_body {
 	width: 100%;
 	min-height: 800px;
+}
+
+.upcoming_events {
+	li {
+		margin-bottom: 10px;
+		background-color: $colour_five;
+		color: #eeeeee;
+		padding: 4px;
+		a {
+			color: #dddddd;
+			&:visited {color: #dddddd;}
+			&:hover {color: #bbbbbb;}
+		}
+	}
+	&:first-child {margin-top: 40px;}
 }
