@@ -65,7 +65,7 @@ class EventsController < ApplicationController
   def edit
     event = Event.find(params[:id])
 	@curr_user = current_user
-	if owns_event_or_admin? event
+	if owns_event_or_admin? event, @curr_user
 		@event = event
 	else
 		redirect_to event_path(event)
