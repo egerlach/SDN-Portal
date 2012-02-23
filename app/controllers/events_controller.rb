@@ -12,17 +12,12 @@ class EventsController < ApplicationController
   def index
 	@events = Event.all
 	@curr_user = current_user
-	
-	if !is_admin?
-		redirect_to root_path
-	else
 
-		respond_to do |format|
+	respond_to do |format|
 		format.html # index.html.erb
 		format.json { render json: @events }
-		end
-
 	end
+
   end
 
   # GET /events/1

@@ -22,7 +22,7 @@
 	
 	<hr />
 	<div class="event_signup">
-		<% if @event.open %>
+		<% if @event.open && (!@event.slots || (@event.slots > @event.guests.count)) %>
 		
 		<%= form_for(@guest) do |f| %>
 		  
