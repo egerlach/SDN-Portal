@@ -47,10 +47,26 @@
 </div>
 
 <div class="home_second_column">
+
 	<div class="newspost_search">
 		<%= form_tag(root_path, :method => "get") do %>
 			<%= text_field_tag(:search, params[:search]) %>
 			<%= submit_tag("Search") %>
 		<% end %>
 	</div>
+
+	<ul class="upcoming_events">
+		<li><h2>Upcoming Events:</h2></li>
+		<% @events.each do |ev| %>
+			<li>
+				<h3><%= link_to ev.name, ev %></h3>
+				<h4><%= ev.blurb %></h4>
+				<% if ev.start_at.strftime("%B %d, %Y") == ev.end_at.strftime("%B %d, %Y") %>
+					<h4><%= ev.location %> on <%= ev.start_at.strftime("%B %d, %Y at %I:%M%p") %> to <%= ev.end_at.strftime("%I:%M%p") %></h4>
+				<% else %>
+					<h4><%= ev.location %> on <%= ev.start_at.strftime("%B %d, %Y at %I:%M%p") %> to <%= ev.end_at.strftime("%B %d, %Y at %I:%M%p") %></h4>
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
 </div>
