@@ -56,7 +56,7 @@ module ApplicationHelper
 	
 	# Returns the soonest event after today, or the previous one if there is no next one
 	def next_event
-		next_event = Event.where("start_at >= ?", Date.today).order(:start_at).limit(1).first
+		next_event = Event.where("start_at >= ?", Date.today).order(:start_at).first
 		if next_event
 			next_event
 		else
