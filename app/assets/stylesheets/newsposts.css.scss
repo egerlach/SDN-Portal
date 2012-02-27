@@ -3,14 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $colour_one: #3a4647;
 
-h1 {
-	display: block;
-	font-size: 2em;
-	margin: 5px 0 15px 0;
-	font-weight: bold;
-}
-
-
 textarea {
 	height: 50px;
 }
@@ -31,11 +23,9 @@ textarea {
 		border-bottom: 1px solid black;
 		h2 {
 			margin: 5px 0 0 0;
-			font-size: 1.5em;
 		}
 		h3 {
 			margin: 0 0 0 20px;
-			font-size: 0.9em;
 		}
 		.news_header_text {
 			float: left;

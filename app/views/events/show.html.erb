@@ -16,16 +16,17 @@
 
 </h1>
 
-<%= event_navigation_bar %>
 <div class="event_wrapper">
 	
 	<%= safe_content(@event.content).html_safe %>
 	
 	<hr />
 	<div class="event_signup">
-		<% if @event.open %>
+		<% if @event.open && (!@event.slots || (@event.slots > @event.guests.count)) %>
 		
 		<%= form_for(@guest) do |f| %>
+		  
+		  <p id="alert"><%= alert %></p>
 
 		  <div class="field">
 			<%= f.label :first_name %><br />
@@ -53,7 +54,7 @@
 		<% end %>
 	</div>
 	
-	<% if current_user.id == @event.user_id || is_admin? %>
+	<% if @curr_user.id == @event.user_id || is_admin? %>
 		<table class="guest_list">
 		<tr>
 			<th>First Name</th>
@@ -72,3 +73,4 @@
 		</table>
 	<% end %>
 </div>
+<%= event_navigation_bar(@curr_user) %>

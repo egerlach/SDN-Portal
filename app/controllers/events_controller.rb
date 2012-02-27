@@ -3,8 +3,7 @@ class EventsController < ApplicationController
   before_filter :user_exists?, :except => [ :show ]
   
   # Sees if the current user has permissions for this event
-  def owns_event_or_admin? event
-	curr_user = current_user
+  def owns_event_or_admin? event, curr_user
 	curr_user && event.user_id == curr_user.id || curr_user.admin
   end
   
@@ -12,23 +11,20 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
 	@events = Event.all
-	
-	if !is_admin?
-		redirect_to root_path
-	else
+	@curr_user = current_user
 
-		respond_to do |format|
+	respond_to do |format|
 		format.html # index.html.erb
 		format.json { render json: @events }
-		end
-
 	end
+
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
 	@events = Event.order(:start_at)
+	@curr_user = current_user
 	
 	if @events.empty? && logged_in?
 		redirect_to new_event_path
@@ -52,6 +48,7 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
 	@event = Event.new
+	@curr_user = current_user
 	
 	respond_to do |format|
 		format.html # new.html.erb
@@ -62,7 +59,8 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     event = Event.find(params[:id])
-	if owns_event_or_admin? event
+	@curr_user = current_user
+	if owns_event_or_admin? event, @curr_user
 		@event = event
 	else
 		redirect_to event_path(event)
@@ -90,7 +88,7 @@ class EventsController < ApplicationController
   # PUT /events/1.json
   def update
     event = Event.find(params[:id])
-	if owns_event_or_admin? event
+	if owns_event_or_admin? event, current_user
 		@event = event
 
 		respond_to do |format|
@@ -111,7 +109,7 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     event = Event.find(params[:id])
-	if owns_event_or_admin? event
+	if owns_event_or_admin? event, current_user
 		@event = event
 		@event.destroy
 	
