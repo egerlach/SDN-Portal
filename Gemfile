@@ -15,6 +15,7 @@ end
 gem 'sanitize'
 gem 'will_paginate'
 gem 'capistrano'
+gem 'capistrano_database_yml'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -10,7 +10,7 @@ set :use_sudo, false
 set :skip_db_setup, true
 
 require 'bundler/capistrano'
-require 'config/deploy/capistrano_database_yml'
+require 'database_yml/capistrano'
 
 task :dev do
   server "dev.fs.uwaterloo.ca", :web, :app
